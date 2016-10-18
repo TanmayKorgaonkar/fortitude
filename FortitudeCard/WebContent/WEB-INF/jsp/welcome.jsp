@@ -1,7 +1,7 @@
 <html>
 <head>
-<title>Spring MVC Tutorial by Crunchify - Hello World Spring MVC
-	Example</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Fortitude Group</title>
 <style type="text/css">
 body {
 	background-image: url('http://crunchify.com/bg.png');
