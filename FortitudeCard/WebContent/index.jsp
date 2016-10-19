@@ -14,6 +14,7 @@
 		</h2>
 		<h3>
 			<a href="welcome.html">By clicking here you acknowledge that you are greater then 18 years old </a>
+			<a href="homepage.html">By clicking here you acknowledge that you Want to visit the homepage </a>
 		</h3>
 	</div>
 </body>
