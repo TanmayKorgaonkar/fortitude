@@ -1,6 +1,6 @@
 package com.fortitude.dto;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class AccountDto {
 	
@@ -8,8 +8,7 @@ public class AccountDto {
 	private String accountName;
 	private String accountNickName;
 	private int rank;
-	private int id;
-	private LocalDate dateOfBirth;
+	private Date dateOfBirth;
 	private String gender;
 	private String mobileNumber;
 	private String country;
@@ -18,14 +17,13 @@ public class AccountDto {
 	private String sponsorLink;
 	private int totalEarnings;
 	public AccountDto(String accountId, String accountName, String accountNickName, int rank, int id,
-			LocalDate dateOfBirth, String gender, String mobileNumber, String country, String email,
+			Date dateOfBirth, String gender, String mobileNumber, String country, String email,
 			String liteCoinAddress, String sponsorLink, int totalEarnings) {
 		super();
 		this.accountId = accountId;
 		this.accountName = accountName;
 		this.accountNickName = accountNickName;
 		this.rank = rank;
-		this.id = id;
 		this.dateOfBirth = dateOfBirth;
 		this.gender = gender;
 		this.mobileNumber = mobileNumber;
@@ -59,16 +57,10 @@ public class AccountDto {
 	public void setRank(int rank) {
 		this.rank = rank;
 	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public LocalDate getDateOfBirth() {
+	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
-	public void setDateOfBirth(LocalDate dateOfBirth) {
+	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 	public String getGender() {

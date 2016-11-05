@@ -28,6 +28,11 @@
 	</build>
 	<dependencies>
 		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.6</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>4.3.1.RELEASE</version>
@@ -57,24 +62,24 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-		
+
 		<dependency>
-		    <groupId>org.webjars</groupId>
-		    <artifactId>jquery</artifactId>
-		    <version>2.1.1</version>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>2.1.1</version>
 		</dependency>
- 
+
 		<dependency>
-		    <groupId>org.webjars</groupId>
-		    <artifactId>bootstrap</artifactId>
-		    <version>3.2.0</version>
-		    <exclusions>
-		        <exclusion>
-		            <groupId>org.webjars</groupId>
-		            <artifactId>jquery</artifactId>
-		        </exclusion>
-		    </exclusions>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>3.2.0</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.webjars</groupId>
+					<artifactId>jquery</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
-		
+
 	</dependencies>
 </project>
