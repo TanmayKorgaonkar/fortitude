@@ -7,7 +7,7 @@ public class AccountDto {
 	private String accountId;
 	private String accountName;
 	private String accountNickName;
-	private int rank;
+	private long rank;
 	private Date dateOfBirth;
 	private String gender;
 	private String mobileNumber;
@@ -15,10 +15,10 @@ public class AccountDto {
 	private String email;
 	private String liteCoinAddress;
 	private String sponsorLink;
-	private int totalEarnings;
-	public AccountDto(String accountId, String accountName, String accountNickName, int rank, int id,
+	private long totalEarnings;
+	public AccountDto(String accountId, String accountName, String accountNickName, long rank, 
 			Date dateOfBirth, String gender, String mobileNumber, String country, String email,
-			String liteCoinAddress, String sponsorLink, int totalEarnings) {
+			String liteCoinAddress, String sponsorLink, long totalEarnings) {
 		super();
 		this.accountId = accountId;
 		this.accountName = accountName;
@@ -33,6 +33,15 @@ public class AccountDto {
 		this.sponsorLink = sponsorLink;
 		this.totalEarnings = totalEarnings;
 	}
+	
+	
+	
+	public AccountDto() {
+		super();
+	}
+
+
+
 	public String getAccountId() {
 		return accountId;
 	}
@@ -51,10 +60,10 @@ public class AccountDto {
 	public void setAccountNickName(String accountNickName) {
 		this.accountNickName = accountNickName;
 	}
-	public int getRank() {
+	public long getRank() {
 		return rank;
 	}
-	public void setRank(int rank) {
+	public void setRank(long rank) {
 		this.rank = rank;
 	}
 	public Date getDateOfBirth() {
@@ -99,10 +108,10 @@ public class AccountDto {
 	public void setSponsorLink(String sponsorLink) {
 		this.sponsorLink = sponsorLink;
 	}
-	public int getTotalEarnings() {
+	public long getTotalEarnings() {
 		return totalEarnings;
 	}
-	public void setTotalEarnings(int totalEarnings) {
+	public void setTotalEarnings(long totalEarnings) {
 		this.totalEarnings = totalEarnings;
 	}
 }
