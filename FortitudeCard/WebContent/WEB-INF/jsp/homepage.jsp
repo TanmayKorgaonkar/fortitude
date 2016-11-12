@@ -45,7 +45,7 @@
 								<li><a class="page-scroll" href="homepage.jsp">Home</a></li> 
 							<li><a href="#">My Account <i class="fa fa-angle-down"></i></a>
 							<ul>
-								<li><a class="page-scroll" href="#tm_sec">Quick Summary</a></li>
+								<li><a class="page-scroll" href="#act_sum_sec">Quick Summary</a></li>
 								<li><a class="page-scroll" href="#tstm_sec">Past Records</a></li>
 								<li><a class="page-scroll" href="#lts_sec">Latest Deals</a></li>
 								<li><a class="page-scroll" href="#pricing_sec">Investments</a></li>
@@ -53,15 +53,15 @@
 							</ul>
 							</li> 						
 
-							<li><a href="#">Invest<i class="fa fa-angle-down"></i></a>
-							<ul>
-								<li><a class="page-scroll" href="blog.html">Trade</a></li>
-								<li><a class="page-scroll" href="single.html">Single Blog Page</a></li>
-							</ul>
+							<li><a href="#">Transfer<i class="fa fa-angle-down"></i></a>
+<!-- 							<ul> -->
+<!-- 								<li><a class="page-scroll" href="blog.html">Trade</a></li> -->
+<!-- 								<li><a class="page-scroll" href="single.html">Single Blog Page</a></li> -->
+<!-- 							</ul> -->
 							</li> 
 							
-								<li><a class="page-scroll" href="#abt_sec">About</a></li>
-								<li><a class="page-scroll" href="#pr_sec">Our Service</a></li>
+								<li><a class="page-scroll" href="#abt_sec">Invest</a></li>
+								<li><a class="page-scroll" href="#pr_sec">Request</a></li>
 								<li><a class="page-scroll" href="#protfolio_sec">Our Portfolio</a></li>
 								<li><a class="page-scroll" href="#ctn_sec">Contact Us</a></li>
 							</ul>
@@ -152,6 +152,42 @@
 	</div>
 </section>
 <!-- End About Section -->
+
+<!-- start Account Summery Section -->
+<section id="act_sum_sec">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs12 ">
+				<div class="title_sec">
+				</div>			
+			</div>		
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs12 ">
+				<div class="abt">
+					<p>This is account summery section</p>
+				</div>
+				
+				<div class="account-summery">
+					<div class="row quick-summery">
+					  STATISTIC CHART
+					</div>
+				
+					<div class="row">
+					<div class="col-md-1"></div>
+  					<div class="col-md-2 first-column">View Transaction History</div>
+  					<div class="col-md-2 middle-column">Bonus Management</div>
+					<div class="col-md-2 middle-column">Interest Gains</div>
+					<div class="col-md-2 middle-column" >Genealogy tree</div>
+					<div class="col-md-2 last-column">Buy Lite Coins</div>
+					<div class="col-md-1"></div>
+					</div>
+					
+				</div>
+			</div>			
+		</div>
+	</div>
+</section>
+<!-- End Account Summery Section -->
+
 
 <!-- start Counting section-->
 <section id="counting_sec">

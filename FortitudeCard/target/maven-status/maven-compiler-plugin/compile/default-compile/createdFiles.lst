@@ -1,4 +1,7 @@
+com\fortitude\connection\DatabaseConnection.class
+com\fortitude\util\DatabaseUtil.class
+com\fortitude\dao\impl\AccountDaoImpl.class
 com\fortitude\controller\homePageController.class
 com\fortitude\controller\fortitudeController.class
-com\fortitude\util\DatabaseUtil.class
 com\fortitude\dto\AccountDto.class
+com\fortitude\dao\AccountDao.class

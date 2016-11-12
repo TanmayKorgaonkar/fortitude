@@ -64,6 +64,11 @@ public class AccountDaoImpl implements AccountDao{
 		
 	}
 	
+	AccountDto getMockAccDto(){
+		AccountDto accountDto= new AccountDto("dto1");
+		return accountDto;
+	}
+	
 	private static String ADD_USER = "INSERT INTO accounts(account_id, account_name, account_nick_name, rank, date_of_birth, gender, mobile_number,country, email, lite_coin_address, sponsor_link, total_earnings) values (?,?,?,?,?,?,?,?,?,?,?,?)";
 
 }
