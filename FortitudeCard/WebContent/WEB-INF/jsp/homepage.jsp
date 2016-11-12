@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!doctype html>
 <html class="no-js" lang="">
     <head>
@@ -52,10 +54,10 @@
 								<li><a class="page-scroll" href="#clt_sec">Our Happy Client</a></li>
 							</ul>
 							</li> 						
-
 							<li><a href="#">Invest<i class="fa fa-angle-down"></i></a>
 							<ul>
-								<li><a class="page-scroll" href="blog.html">Trade</a></li>
+								<li><a class="page-scroll" href ="/AccountController?action=listAccounts">Account Summary</a></li>
+								<li><a class="page-scroll" href="/InsertAccountController/AddAccounts">Add Account</a></li>
 								<li><a class="page-scroll" href="single.html">Single Blog Page</a></li>
 							</ul>
 							</li> 
