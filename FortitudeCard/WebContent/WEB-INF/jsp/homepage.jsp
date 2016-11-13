@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="resources/css/font-awesome.min.css">
         <link rel="stylesheet" href="resources/css/owl.carousel.css">
         <link rel="stylesheet" href="resources/css/responsive.css">
-        <link rel="stylesheet" href="resources/css/style.css">
+        <link rel="stylesheet" type="text/css" href="resources/css/style.css">
 
     </head>
 <body >
