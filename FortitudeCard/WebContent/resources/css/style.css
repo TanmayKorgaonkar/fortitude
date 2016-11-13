@@ -980,3 +980,26 @@ width : 355px !important ;
 .single_cnt_m {
 width : 731px !important ;
 }
+
+
+.account-summery{
+	
+}
+.account-summery .first-column{
+	border: 1px solid gray;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+.account-summery .middle-column{
+	border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    border-right: 1px solid gray;
+}
+
+.account-summery .last-column{
+	border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    border-right: 1px solid gray;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}

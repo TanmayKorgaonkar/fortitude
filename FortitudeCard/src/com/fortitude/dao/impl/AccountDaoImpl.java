@@ -72,6 +72,11 @@ public class AccountDaoImpl implements AccountDao{
 		
 	}
 	
+	AccountDto getMockAccDto(){
+		AccountDto accountDto= new AccountDto("dto1");
+		return accountDto;
+	}
+	
 	@Override
 	public void deleteAccount(DatabaseConnection transaction, AccountDto accountDto) {
 		try{

@@ -16,6 +16,27 @@ public class AccountDto {
 	private String liteCoinAddress;
 	private String sponsorLink;
 	private long totalEarnings;
+	
+	public AccountDto(String tempDtoId){
+	if(tempDtoId=="dto1"){
+		this.accountId = "145-485-1548";
+		this.accountName = "Tanmay Korgaonkar";
+		this.accountNickName = "Tanu";
+		this.rank = 2;
+		this.dateOfBirth = new Date("12/06/1992");
+		this.gender = "Male";
+		this.mobileNumber = "8082180301";
+		this.country = "India";
+		this.email = "5utanmay@gmail.com";
+		this.liteCoinAddress = "fucking dont know";
+		this.sponsorLink = "fuck sponsors";
+		this.totalEarnings = 5000;
+	}else if(tempDtoId=="dto2"){
+		
+	}
+	
+	}
+	
 	public AccountDto(String accountId, String accountName, String accountNickName, long rank, 
 			Date dateOfBirth, String gender, String mobileNumber, String country, String email,
 			String liteCoinAddress, String sponsorLink, long totalEarnings) {

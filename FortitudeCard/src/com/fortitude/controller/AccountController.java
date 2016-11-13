@@ -7,21 +7,20 @@ import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.el.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fortitude.connection.DatabaseConnection;
 import com.fortitude.dao.AccountDao;
-import com.fortitude.dao.Transaction;
-import com.fortitude.dao.impl.AccountDaoImpl;
 import com.fortitude.dto.AccountDto;
+import com.fortitude.service.AccountService;
 
 
 @RequestMapping("/listAccounts")
@@ -78,4 +77,41 @@ public class AccountController extends HttpServlet{
 		request.setAttribute("accounts", accountDao.getAllAccounts(transaction, accountDto));
 		view.forward(request, response);
 	}
+	
+	
+	
+	
+	
+	// TODO:Write controller this way
+	// list page
+	@Autowired
+	private AccountService accountService;
+	
+	
+	
+	@RequestMapping(value = "/accounts", method = RequestMethod.GET)
+	public String getAccount(Model model) {
+		model.addAttribute("account", accountService.getAccount("temp-account"));
+		return "/quickSummery";
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
