@@ -1,7 +1,13 @@
 com\fortitude\connection\DatabaseConnection.class
+com\fortitude\dao\Transaction.class
+com\fortitude\service\AccountService.class
 com\fortitude\util\DatabaseUtil.class
-com\fortitude\dao\impl\AccountDaoImpl.class
+com\fortitude\validators\AccountValidator.class
 com\fortitude\controller\homePageController.class
-com\fortitude\controller\fortitudeController.class
 com\fortitude\dto\AccountDto.class
+com\fortitude\serviceImpl\AccountServiceImpl.class
 com\fortitude\dao\AccountDao.class
+com\fortitude\dao\impl\AccountDaoImpl.class
+com\fortitude\dao\Transaction$TransactionException.class
+com\fortitude\controller\AccountController.class
+com\fortitude\controller\fortitudeController.class

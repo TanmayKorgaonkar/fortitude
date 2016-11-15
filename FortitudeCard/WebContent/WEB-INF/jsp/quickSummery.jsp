@@ -24,6 +24,64 @@
     </head>
 <body>
 
+<header class="main_menu_sec navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 col-md-3 col-sm-12">
+				<div class="lft_hd">
+					<a href="homepage.jsp"><img src="/resources/img/logo.png" alt=""/></a>
+				</div>
+			</div>			
+			<div class="col-lg-9 col-md-9 col-sm-12">
+				<div class="rgt_hd">					
+					<div class="main_menu">
+						<nav id="nav_menu">
+							<button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							</button>	
+						<div id="navbar">
+							<ul>
+								<li><a class="page-scroll" href="homepage.jsp">Home</a></li> 
+							<li><a href="#">My Account <i class="fa fa-angle-down"></i></a>
+							<ul>
+								<li><a class="page-scroll" href="#act_sum_sec">Quick Summary</a></li>
+								<li><a class="page-scroll" href="#tstm_sec">Past Records</a></li>
+								<li><a class="page-scroll" href="#lts_sec">Latest Deals</a></li>
+								<li><a class="page-scroll" href="#pricing_sec">Investments</a></li>
+								<li><a class="page-scroll" href="#clt_sec">Our Happy Client</a></li>
+							</ul>
+							</li> 						
+
+							<li><a href="#">Transfer<i class="fa fa-angle-down"></i></a>
+<!-- 							<ul> -->
+<!-- 								<li><a class="page-scroll" href="blog.html">Trade</a></li> -->
+<!-- 								<li><a class="page-scroll" href="single.html">Single Blog Page</a></li> -->
+<!-- 							</ul> -->
+							<li><a href="#">Invest<i class="fa fa-angle-down"></i></a>
+							<ul>
+								<li><a class="page-scroll" href ="/FortitudeCard/listAccounts/accounts.html">Account Summary</a></li>
+								<li><a class="page-scroll" href="/InsertAccountController/AddAccounts">Add Account</a></li>
+								<li><a class="page-scroll" href="single.html">Single Blog Page</a></li>
+							</ul>
+							</li> 
+							
+								<li><a class="page-scroll" href="#abt_sec">Invest</a></li>
+								<li><a class="page-scroll" href="#pr_sec">Request</a></li>
+								<li><a class="page-scroll" href="#protfolio_sec">Our Portfolio</a></li>
+								<li><a class="page-scroll" href="#ctn_sec">Contact Us</a></li>
+							</ul>
+						</div>		
+						</nav>			
+					</div>					
+						
+				</div>
+			</div>	
+		</div>	
+	</div>	
+</header>
+
 <!-- start Account Summery Section -->
 <section id="act_sum_sec">
 	<div class="container">

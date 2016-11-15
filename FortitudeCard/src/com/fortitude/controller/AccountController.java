@@ -89,11 +89,10 @@ public class AccountController extends HttpServlet{
 	
 	
 	
-	@RequestMapping(value = "/accounts", method = RequestMethod.GET)
+	@RequestMapping(value = "/indexAdmin", method = RequestMethod.GET)
 	public String getAccount(Model model) {
 		model.addAttribute("account", accountService.getAccount("temp-account"));
-		return "/quickSummery";
-
+		return "/indexAdmin";
 	}
 	
 	

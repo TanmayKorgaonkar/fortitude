@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import javax.ejb.Stateful;
 
 import javax.annotation.PreDestroy;
-import javax.faces.bean.RequestScoped;
+//import javax.faces.bean.RequestScoped;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,7 +16,7 @@ import com.fortitude.util.DatabaseUtil;
 
 
 @Stateful
-@RequestScoped
+//@RequestScoped
 public class DatabaseConnection implements Transaction, Serializable{
 	private static final long serialVersionUID=-7828715984476316619L;
 

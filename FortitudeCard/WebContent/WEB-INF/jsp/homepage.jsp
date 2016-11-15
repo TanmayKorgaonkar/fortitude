@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!doctype html>
 <html class="no-js" lang="">
     <head>
@@ -62,7 +64,7 @@
 <!-- 							</ul> -->
 							<li><a href="#">Invest<i class="fa fa-angle-down"></i></a>
 							<ul>
-								<li><a class="page-scroll" href ="/AccountController?action=listAccounts">Account Summary</a></li>
+								<li><a class="page-scroll" href ="/FortitudeCard/listAccounts/indexAdmin.html">Account Summary</a></li>
 								<li><a class="page-scroll" href="/InsertAccountController/AddAccounts">Add Account</a></li>
 								<li><a class="page-scroll" href="single.html">Single Blog Page</a></li>
 							</ul>
@@ -641,7 +643,7 @@
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs12 ">
 				<div class="title_sec">
 					<h1>Our Pricing Plan</h1>
-					<h2>WE’RE BRANDING & DIGITAL STUDIO FROM VIET NAM</h2>
+					<h2>We Are Fortitude. Investment group from Singapore</h2>
 				</div>			
 			</div>		
 			<div class="col-lg-4 col-md-4 col-sm-12">
@@ -744,7 +746,7 @@
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs12 ">
 				<div class="title_sec">
 					<h1>Contact Info</h1>
-					<h2>WE’RE BRANDING & DIGITAL STUDIO FROM VIET NAM</h2>
+					<h2>We are Investment and lifestyle firm from Singapore</h2>
 				</div>			
 			</div>		
 			<div class="col-sm-6"> 
@@ -768,9 +770,9 @@
 			<div class="col-lg-6 col-md-6 col-sm-6">
 				<div class="cnt_info">
 					<ul>
-						<li><i class="fa fa-facebook"></i><p>121 King Street, Melbourne Victoria 3000 Australia</p></li>
-						<li><i class="fa fa-envelope"></i><p>contact@info.com</p></li>
-						<li><i class="fa fa-phone"></i><p>+0987654321 (+012345678)</p></li>
+						<li><i class="fa fa-facebook"></i><p>Singapore</p></li>
+						<li><i class="fa fa-envelope"></i><p>xxx@xxx.com</p></li>
+						<li><i class="fa fa-phone"></i><p></p></li>
 					</ul>
 				</div>
 			</div>			
@@ -826,21 +828,21 @@
 </footer>
 <!-- End footer Section -->
 
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-        <script src="/resources/js/vendor/jquery-1.11.3.min.js"></script>
+<script src="<c:url value ="http://code.jquery.com/jquery-1.9.1.min.js"/>"></script>
+<script src="<c:url value ="/resources/js/jquery-1.11.3.min.js"/>"></script>
 
-<script type="text/javascript" src="/resources/js/isotope.pkgd.min.js"></script>
-<script type="text/javascript" src="/resources/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/resources/js/jquery-ui.js"></script>
-<script type="text/javascript" src="/resources/js/appear.js"></script>
-<script type="text/javascript" src="/resources/js/jquery.counterup.min.js"></script>
-<script type="text/javascript" src="/resources/js/waypoints.min.js"></script>
-<script type="text/javascript" src="/resources/js/owl.carousel.min.js"></script>
-<script type="text/javascript" src="/resources/js/showHide.js"></script>
-<script type="text/javascript" src="/resources/js/jquery.nicescroll.min.js"></script>
-<script type="text/javascript" src="/resources/js/jquery.easing.min.js"></script>
-<script type="text/javascript" src="/resources/js/scrolling-nav.js"></script>
-<script type="text/javascript" src="/resources/js/plugins.js"></script>
+<script src="<c:url value ="/resources/js/isotope.pkgd.min.js"/>"></script>
+<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
+<script src="<c:url value="/resources/js/jquery-ui.js"/>"></script>
+<script src="<c:url value="/resources/js/appear.js"/>"></script>
+<script src="<c:url value="/resources/js/jquery.counterup.min.js"/>"></script>
+<script src="<c:url value="/resources/js/waypoints.min.js"/>"></script>
+<script src="<c:url value="/resources/js/owl.carousel.min.js"/>"></script>
+<script src="<c:url value="/resources/js/showHide.js"/>"></script>
+<script src="<c:url value= "/resources/js/jquery.nicescroll.min.js"/>"></script>
+<script src="<c:url value="/resources/js/jquery.easing.min.js"/>"></script>
+<script src="<c:url value="/resources/js/scrolling-nav.js"/>"></script>
+<script src="<c:url value="/resources/js/plugins.js"/>"></script>
 <!-- Google Map js -->
         <script src="https://maps.googleapis.com/maps/api/js"></script>
 		<script>
@@ -861,9 +863,9 @@
 			}
 			google.maps.event.addDomListener(window, 'load', initialize);
 		</script>
-<script src="/resources/js/main.js" type="text/javascript"></script>
+<script src="<c:url value="/resources/js/main.js" />"></script>
 
-<script src="/resources/js/showHide.js" type="text/javascript"></script>
+<script src="<c:url value="/resources/js/showHide.js" />"></script>
 
 <script type="text/javascript">
 

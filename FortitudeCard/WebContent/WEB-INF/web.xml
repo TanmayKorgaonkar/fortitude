@@ -11,15 +11,16 @@
     </servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
-  
   <servlet-mapping>
     <servlet-name>fortitude</servlet-name>
     <url-pattern>/welcome.jsp</url-pattern>
     <url-pattern>/homepage.html</url-pattern>
     <url-pattern>/homepage.jsp</url-pattern>
     <url-pattern>/welcome.html</url-pattern>
-    <url-pattern>/listAccounts.jsp</url-pattern>
-    <url-pattern>/listAccounts.html</url-pattern>
+    <!--  <url-pattern>/listAccounts.jsp</url-pattern> -->
+    <!-- <url-pattern>/listAccounts.html</url-pattern>  -->
+    <url-pattern>/indexAdmin.html</url-pattern>
+    <url-pattern>/indexAdmin.jsp</url-pattern>
     <url-pattern>*.html</url-pattern>
   </servlet-mapping>
   <context-param>
@@ -31,5 +32,4 @@
     <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
     <param-value>resources.application</param-value>
   </context-param>
-
 </web-app>
