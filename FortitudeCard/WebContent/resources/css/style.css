@@ -1003,3 +1003,100 @@ width : 731px !important ;
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
 }
+
+.invest-title{
+	font-size: 32px;
+    color: #00AFF0;
+    font-weight: 300;
+}
+
+.invest-title-header{
+	font-size: 38px;
+    color: grey;
+    font-weight: 300;
+    display: flex;
+}
+
+.invest-title-details{
+	font-size: 12px;
+    color: grey;
+    font-weight: 300;
+}
+
+.invest-main-title{
+	font-size: 28px;
+    color: black;
+    text-align: center;
+}
+
+.invest-title-header-item{
+	width:	100%;
+}
+
+.invest-title-project-header{
+	font-size: 16px;
+    width: 94%;
+    margin: 3%;
+    color: gray;
+}
+.invest-title-project-image{
+	border: 1px solid #00aff0;
+    width: 94%;
+    height: 170px;
+    border-radius: 12px;
+    margin: 3%;
+}
+
+.invest-title-project-name{
+	font-size: 14px;
+    font-weight: 800;
+    width: 94%;
+    margin: 3%;
+}
+.invest-title-project-main-header{
+	font-size: 20px;
+    padding: 20px;
+}
+.invest-title-project-details{
+	font-size: 12px;
+    width: 94%;
+    margin: 3%;
+}
+
+.invest-title-project-popover-container{
+	width: 300px;
+    position: absolute;
+}
+.invest-title-project-popover-panels{
+	  width: 50%;
+    position: relative;
+    float: left;
+}
+
+.invest-title-project-popover-title{
+    font-size: 12px;
+    color: gray;
+    padding: 8px;
+}
+
+.invest-title-project-popover-cost{
+    font-weight: 700;
+    color: #31708f;
+    font-size: 18px;
+    padding: 0 16px;
+}
+
+.invest-title-project-popover-button{
+    position: relative;
+    top: 14px;
+    float: right;
+}
+
+.hidden {
+   display: none; 
+}
+
+.popover{
+    width:300px;
+    height:80px;
+}

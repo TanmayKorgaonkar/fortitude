@@ -70,7 +70,7 @@
 							</ul>
 							</li> 
 							
-								<li><a class="page-scroll" href="#abt_sec">Invest</a></li>
+								<li><a class="page-scroll" href="#abt_investment">Invest</a></li>
 								<li><a class="page-scroll" href="#pr_sec">Request</a></li>
 								<li><a class="page-scroll" href="#protfolio_sec">Our Portfolio</a></li>
 								<li><a class="page-scroll" href="#ctn_sec">Contact Us</a></li>
@@ -299,6 +299,117 @@
 	</div>
 </section>
 <!-- End progress bar Section -->
+
+<div id="abt_investment" style="height:100px"></div>
+<!-- start Invest Section -->
+<section id="sec_investment">
+	<div class="container">
+		<div class="row">
+		
+			<div  style="margin: 20px;" class="col-lg-12 col-md-12 col-sm-12 col-xs12 ">
+				<div class="invest-main-title" >
+					Investment
+				</div>
+				<div class="invest-title" >
+					Fortitude Membership
+				</div>	
+				<div class="invest-title-header" >
+						<div class="invest-title-header-item">BUY</div>
+						<div class="invest-title-header-item">
+							<div>$3,300 SGD</div>
+							<div class="invest-title-details" >20% dividend on per month</div>
+						</div>
+				</div>			
+			</div>
+			
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs12 ">
+			
+				<div class="invest-title-project-main-header" >	Card fund Business	</div>	
+			
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="invest-title-project-image" style="background-image: url(resources/img/proj1.jpeg);">
+					</div>
+					<a id="project1-popover-link" tabindex="0" class="invest-title-project-header" role="button" data-placement="bottom" data-trigger="focus">Real Estate Biz</a>
+					<div class="invest-title-project-name">La Refugio</div>
+				<div class="invest-title-project-details">Nuestra primera colaboración (: Vasijas de cerámica únicas y protectoras, intervenidas a mano por cuatro artistas mexicanos
+				</div>
+				</div>
+				
+				<div id="project1-popover-content" class="hidden invest-title-project-popover-container">
+					<div class="invest-title-project-popover-panels">
+						<div class="invest-title-project-popover-title">Project Cost</div>
+						<div  class="invest-title-project-popover-cost">15000$</div>
+					</div>
+						<button type="button" class="btn btn-success invest-title-project-popover-button">Invest</button>
+				</div>
+				
+				
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="invest-title-project-image" style="background-image: url(resources/img/proj2.jpg);">
+					</div>
+					<a id="project2-popover-link" tabindex="0" class="invest-title-project-header" role="button" data-placement="bottom" data-trigger="focus">Real Estate Biz</a>
+					<div class="invest-title-project-name">Tótem Gallery</div>
+				<div class="invest-title-project-details">The first concept gallery in Mexico City. An exhibition space for the best proposals of art, fashion and design in Mexico City</div>
+				</div>
+				
+				<div id="project2-popover-content" class="hidden invest-title-project-popover-container">
+					<div class="invest-title-project-popover-panels">
+						<div class="invest-title-project-popover-title">Project Cost</div>
+						<div  class="invest-title-project-popover-cost">18000$</div>
+					</div>
+						<button type="button" class="btn btn-success invest-title-project-popover-button">Invest</button>
+				</div>
+				
+				
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="invest-title-project-image" style="background-image: url(resources/img/proj3.jpg);">
+					</div>
+					<a id="project3-popover-link" tabindex="0" class="invest-title-project-header" role="button" data-placement="bottom" data-trigger="focus">Tuti, muñecas artesanales.</a>
+					<div class="invest-title-project-name">Ernesto Olivera Almanza</div>
+				<div class="invest-title-project-details">Tuti, que en totonaca significa hermana menor, es una marca de muñecas de tela nacidas en un pequeño taller de la Ciudad de México.</div>
+				</div>
+				
+				<div id="project3-popover-content" class="hidden invest-title-project-popover-container">
+					<div class="invest-title-project-popover-panels">
+						<div class="invest-title-project-popover-title">Project Cost</div>
+						<div  class="invest-title-project-popover-cost">21000$</div>
+					</div>
+						<button type="button" class="btn btn-success invest-title-project-popover-button">Invest</button>
+				</div>
+				
+				
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="invest-title-project-image" style="background-image: url(resources/img/proj4.jpg);">
+					</div>
+					<a id="project4-popover-link" tabindex="0" class="invest-title-project-header" role="button" data-placement="bottom" data-trigger="focus">VNGRAVITY A VIRTUAL GALLERY.</a>
+					<div class="invest-title-project-name">txt.ure</div>
+				<div class="invest-title-project-details">Help us preserve a pre-Hispanic technique headed to extinction! Let's build the first tule-weaving artisanal workshop!</div>
+				</div>
+				
+				<div id="project4-popover-content" class="hidden invest-title-project-popover-container">
+					<div class="invest-title-project-popover-panels">
+						<div class="invest-title-project-popover-title">Project Cost</div>
+						<div  class="invest-title-project-popover-cost">25000$</div>
+					</div>
+						<button type="button" class="btn btn-success invest-title-project-popover-button">Invest</button>
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			</div>
+		
+		</div>
+	</div>
+</section>
+<!-- End Invest Section -->
 
 <!-- start Service Section -->
 <section id="pr_sec">
