@@ -121,6 +121,48 @@ $(window).load(function() { // makes sure the whole site is loaded
 	$('#status').fadeOut(); // will first fade out the loading animation
 	$('#loader-wrapper').delay(200).fadeOut('slow'); // will fade out the white DIV that covers the website.
 	$('body').delay(200).css({'overflow-x':'hidden'});
+	
+	$("#project1-popover-link").popover({
+        html : true, 
+        content: function() {
+          return $("#project1-popover-content").html();
+        },
+        title: function() {
+          return $("#example-popover-2-title").html();
+        }
+    });
+	
+	$("#project2-popover-link").popover({
+        html : true, 
+        content: function() {
+          return $("#project2-popover-content").html();
+        },
+        title: function() {
+          return $("#example-popover-2-title").html();
+        }
+    });
+	
+	$("#project3-popover-link").popover({
+        html : true, 
+        content: function() {
+          return $("#project3-popover-content").html();
+        },
+        title: function() {
+          return $("#example-popover-3-title").html();
+        }
+    });
+	
+	$("#project4-popover-link").popover({
+        html : true, 
+        content: function() {
+          return $("#project4-popover-content").html();
+        },
+        title: function() {
+          return $("#example-popover-4-title").html();
+        }
+    });
+	
+	
 })	
 	
 	
