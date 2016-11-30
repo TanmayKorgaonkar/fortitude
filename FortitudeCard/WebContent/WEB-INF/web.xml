@@ -21,6 +21,8 @@
     <!-- <url-pattern>/listAccounts.html</url-pattern>  -->
     <url-pattern>/indexAdmin.html</url-pattern>
     <url-pattern>/indexAdmin.jsp</url-pattern>
+    <url-pattern>/fortitudeLogin.html</url-pattern>
+    <url-pattern>/fortitudeLogin.jsp</url-pattern>
     <url-pattern>*.html</url-pattern>
   </servlet-mapping>
   <context-param>

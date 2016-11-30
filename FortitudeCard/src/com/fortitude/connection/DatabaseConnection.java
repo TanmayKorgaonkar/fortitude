@@ -1,4 +1,4 @@
-package com.fortitude.connection;
+/*package com.fortitude.connection;
 
 import java.io.Serializable;
 import java.sql.Connection;
@@ -91,7 +91,7 @@ public class DatabaseConnection implements Transaction, Serializable{
 		throw new IllegalArgumentException();
 	}
 
-
-
+	
 
 }
+*/

@@ -6,9 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>IN ADMIN PANEL | Powered by INDEZINER</title>
-<link rel="stylesheet"  href="/resources/cssAdmin/style.css" />
-<script src="<c:url value ="/resources/js/jquery.min.js"/>"></script>
-<script src="<c:url value ="/resources/js/ddaccordion.js"/>"></script>
+<link rel="stylesheet"  href="${pageContext.request.contextPath}/resources/cssAdmin/style.css" />
+<script src="<c:url value ="${pageContext.request.contextPath}/resources/js/jquery.min.js"/>"></script>
+<script src="<c:url value ="${pageContext.request.contextPath}/resources/js/ddaccordion.js"/>"></script>
 <script type="text/javascript">
 ddaccordion.init({
 	headerclass: "submenuheader", //Shared CSS class name of headers group
@@ -32,7 +32,7 @@ ddaccordion.init({
 })
 </script>
 
-<script src="<c:url value ="/resources/js/jconfirmaction.jquery.js"/>"></script>
+<script src="<c:url value ="${pageContext.request.contextPath}/resources/js/jconfirmaction.jquery.js"/>"></script>
 <script type="text/javascript">
 	
 	$(document).ready(function() {
@@ -41,15 +41,15 @@ ddaccordion.init({
 	
 </script>
 
-<script src="<c:url value ="/resources/js/niceforms.js"/>"></script>
-<link rel="stylesheet" type="text/css" media="all" href="/resources/css/niceforms-default.css" />
+<script src="<c:url value ="${pageContext.request.contextPath}/resources/js/niceforms.js"/>"></script>
+<link rel="stylesheet" type="text/css" media="all" href="${pageContext.request.contextPath}/resources/css/niceforms-default.css" />
 
 </head>
 <body>
 <div id="main_container">
 
 	<div class="header_login">
-    <div class="logo"><a href="#"><img src="/resources/img/logo.gif" alt="" title="" border="0" /></a></div>
+    <div class="logo"><a href="#"><img src="${pageContext.request.contextPath}/resources/img/logo.gif" alt="" title="" border="0" /></a></div>
     
     </div>
 

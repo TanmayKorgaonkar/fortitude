@@ -17,8 +17,8 @@
     <url-pattern>/homepage.html</url-pattern>
     <url-pattern>/homepage.jsp</url-pattern>
     <url-pattern>/welcome.html</url-pattern>
-    <url-pattern>/listAccounts.jsp</url-pattern>
-    <url-pattern>/listAccounts.html</url-pattern>
+    <!--  <url-pattern>/listAccounts.jsp</url-pattern> -->
+    <!-- <url-pattern>/listAccounts.html</url-pattern>  -->
     <url-pattern>/indexAdmin.html</url-pattern>
     <url-pattern>/indexAdmin.jsp</url-pattern>
     <url-pattern>*.html</url-pattern>

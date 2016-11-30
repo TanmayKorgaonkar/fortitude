@@ -7,7 +7,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Fortitude Group</title>
+        <title>Fortitude Group: Welcome ${loggedInUser}</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,13 +15,13 @@
 	<script src="js/respond.min.js"></script> <![endif]--> 		
         <!-- Place favicon.ico in the root directory -->
 		<link href="https://fonts.googleapis.com/css?family=Lato:400,300,700" rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="resources/css/normalize.css">
-        <link rel="stylesheet" href="resources/css/main.css">
-        <link rel="stylesheet" href="resources/css/bootstrap.min.css">
-        <link rel="stylesheet" href="resources/css/font-awesome.min.css">
-        <link rel="stylesheet" href="resources/css/owl.carousel.css">
-        <link rel="stylesheet" href="resources/css/responsive.css">
-        <link rel="stylesheet" type="text/css" href="resources/css/style.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/normalize.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.carousel.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/responsive.css">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css">
 
     </head>
 <body >
@@ -32,7 +32,7 @@
 		<div class="row">
 			<div class="col-lg-3 col-md-3 col-sm-12">
 				<div class="lft_hd">
-					<a href="homepage.jsp"><img src="/resources/img/logo.png" alt=""/></a>
+					<a href="homepage.jsp"><img src="${pageContext.request.contextPath}/resources/img/logo.png" alt=""/></a>
 				</div>
 			</div>			
 			<div class="col-lg-9 col-md-9 col-sm-12">
@@ -47,13 +47,13 @@
 						<div id="navbar">
 							<ul>
 								<li><a class="page-scroll" href="homepage.jsp">Home</a></li> 
-							<li><a href="#">My Account <i class="fa fa-angle-down"></i></a>
+							<li><a href="/FortitudeCard/listAccounts/account.html">My Account <i class="fa fa-angle-down"></i></a>
 							<ul>
-								<li><a class="page-scroll" href="#act_sum_sec">Quick Summary</a></li>
-								<li><a class="page-scroll" href="#tstm_sec">Past Records</a></li>
-								<li><a class="page-scroll" href="#lts_sec">Latest Deals</a></li>
-								<li><a class="page-scroll" href="#pricing_sec">Investments</a></li>
-								<li><a class="page-scroll" href="#clt_sec">Our Happy Client</a></li>
+								<li><a class="page-scroll" href="#act_sum_sec">View Transaction History</a></li>
+								<li><a class="page-scroll" href="#tstm_sec">Bonus Management</a></li>
+								<li><a class="page-scroll" href="#lts_sec">Interest Gains</a></li>
+								<li><a class="page-scroll" href="#pricing_sec">Genealogy Tree</a></li>
+								<li><a class="page-scroll" href="#clt_sec">Buy LTE Coins</a></li>
 							</ul>
 							</li> 						
 
@@ -476,18 +476,18 @@
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs12 ">
 				<div class="title_sec">
-					<h1>Our Portfolio</h1>
-					<h2>Our number of clients are rocketing high</h2>
+					<h1>Portfolio</h1>
+					<h2>We are present in a number of industries and sectors</h2>
 				</div>			
 			</div>		
 			<div class="col-lg-12">
 				<div class="portfolio-filter text-uppercase text-center">
 				<ul class="filter">
 				<li class="active" data-filter="*">All</li>
-				<li data-filter=".web-design">Web Design</li>
-				<li data-filter=".graphic">Graphic</li>
-				<li data-filter=".photography">Photography</li>
-				<li data-filter=".motion-video">Motion video</li>
+				<li data-filter=".web-design">Investments</li>
+				<li data-filter=".graphic">Real Estate</li>
+				<li data-filter=".photography">Travel and Tourism</li>
+				<li data-filter=".motion-video">Events</li>
 				</ul>
 				</div>
 				 
@@ -709,7 +709,7 @@
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs12 ">
 				<div class="title_sec">
 					<h1>Our Latest Blog</h1>
-					<h2>WE’RE BRANDING & DIGITAL STUDIO FROM VIET NAM</h2>
+					<h2></h2>
 				</div>			
 			</div>		
 			<div class="col-lg-4 col-md-4 col-sm-12">
@@ -760,12 +760,12 @@
 			<div class="col-lg-4 col-md-4 col-sm-12">
 				<div class="sngl_pricing">											
 					<h2 class="title_bg_1">Basic</h2>
-					<h3><span class="currency">$</span>30<span class="monuth">/  mo</span></h3>
+					<h3><span class="currency">$</span>200<span class="monuth">/  mo</span></h3>
 					<ul>
-						<li>30 GB of Storage</li>
-						<li>30 GB of Storage</li>
-						<li>30 GB of Storage</li>
-						<li>30 GB of Storage</li>
+						<li>Incentives</li>
+						<li>Incentives</li>
+						<li>Incentives</li>
+						<li>Incentives</li>
 						<li><a href="" class="btn pricing_btn">Send</a></li>
 						
 					</ul>		
@@ -773,13 +773,13 @@
 			</div>			
 			<div class="col-lg-4 col-md-4 col-sm-12">
 				<div class="sngl_pricing">											
-					<h2 class="title_bg_2">Standerd</h2>
-					<h3><span class="currency">$</span>50<span class="monuth">/  mo</span></h3>
+					<h2 class="title_bg_2">Standard</h2>
+					<h3><span class="currency">$</span>3000<span class="monuth">/  mo</span></h3>
 					<ul>
-						<li>30 GB of Storage</li>
-						<li>30 GB of Storage</li>
-						<li>30 GB of Storage</li>
-						<li>30 GB of Storage</li>
+						<li>Incentives</li>
+						<li>Incentives</li>
+						<li>Incentives</li>
+						<li>Incentives</li>
 						<li><a href="" class="btn pricing_btn">Send</a></li>
 					</ul>		
 				</div>
@@ -787,12 +787,12 @@
 			<div class="col-lg-4 col-md-4 col-sm-12">
 				<div class="sngl_pricing">											
 					<h2 class="title_bg_3">Extended</h2>
-					<h3><span class="currency">$</span>90<span class="monuth">/  mo</span></h3>
+					<h3><span class="currency">$</span>3500<span class="monuth">/  mo</span></h3>
 					<ul>
-						<li>30 GB of Storage</li>
-						<li>30 GB of Storage</li>
-						<li>30 GB of Storage</li>
-						<li>30 GB of Storage</li>
+						<li>Incentives</li>
+						<li>Incentives</li>
+						<li>Incentives</li>
+						<li>Incentives</li>
 						<li><a href="" class="btn pricing_btn">Send</a></li>
 					</ul>		
 				</div>
@@ -810,7 +810,7 @@
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs12 ">
 				<div class="title_sec">
 					<h1>Our Happy Clients</h1>
-					<h2>WE’RE BRANDING & DIGITAL STUDIO FROM VIET NAM</h2>
+					<h2>We Are Fortitude. Investment group from Singapore</h2>
 				</div>			
 			</div>		
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs12">
@@ -898,7 +898,7 @@
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="map">						
-			<h1>located THE MAP</h1><a href="#slidingDiv" class="show_hide" rel="#slidingDiv"><i class="fa fa-angle-up"></i></a>
+			<h1>locate on THE MAP</h1><a href="#slidingDiv" class="show_hide" rel="#slidingDiv"><i class="fa fa-angle-up"></i></a>
 			<div id="slidingDiv">
 				<div class="map_area">
 					<div id="googleMap" style="width:100%;height:300px;"></div>
@@ -931,7 +931,7 @@
 				</div>
 				<ul class="copy_right">
 					<li>&copy;FortitudeGroup 2016</li>
-					<li>developed by Rahul Godha</li>
+					<li>Developed by Fortitude</li>
 				</ul>					
 			</div>	
 		</div>
