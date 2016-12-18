@@ -33,7 +33,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/main.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
+	href="${pageContext.request.contextPath}/resources/css/lib/bootstrap.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css">
 <link rel="stylesheet"
@@ -42,6 +42,11 @@
 	href="${pageContext.request.contextPath}/resources/css/responsive.css">
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/css/style.css">
+	
+	<!--  -->
+	<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/sign-up.css">
+	
 
 </head>
 <body>
@@ -49,86 +54,142 @@
 	<h2>Fill The Form</h2>
 	
 	<form:form method="POST" commandName="signUp">
-		<table>
-			<tr>
-				<td>Enter Your Desired User Id:</td>
-				<td><form:input path="accountId" /></td>
-				<td><form:errors path="accountId" cssStyle="color: #ff0000;"/></td>
-			</tr>
-			<tr>
-				<td>Enter Your First Name:</td>
-				<td><form:input path="accountFirstName"/></td>
-				<td><form:errors path="accountId" cssStyle="color: #ff0000;"/></td>
-			</tr>
-			<tr>
-				<td>Enter Your Last Name:</td>
-				<td><form:input path="accountLastName" /></td>
-				<td><form:errors path="accountLastName" cssStyle="color: #ff0000;"/></td>
-			</tr>
-			<tr>
-				<td>Enter Your Desired NickName:</td>
-				<td><form:input path="accountNickName" /></td>
-				<td><form:errors path="accountNickName" cssStyle="color: #ff0000;"/></td>
-			</tr>
-			<tr>
-				<td>Enter Your rank:</td>
-				<td><form:input path="rank" /></td>
-				<td><form:errors path="rank" cssStyle="color: #ff0000;"/></td>
-			</tr>
-			<tr>
-				<td>Enter Your Date of birth(YYYY-MM-DD):</td>
-				<td><form:input path="dateOfBirth" type="text" id="datePicker"/></td>
-				<td><form:errors path="dateOfBirth" cssStyle="color: #ff0000;"/></td>
-			</tr>
-			<tr>
-				<td>Enter Your gender:</td>
-				<td><form:input path="gender" /></td>
-				<td><form:errors path="gender" cssStyle="color: #ff0000;"/></td>
-			</tr>
-			<tr>
-				<td>Enter Your Mobile Number:</td>
-				<td><form:input path="mobileNumber" /></td>
-				<td><form:errors path="mobileNumber" cssStyle="color: #ff0000;"/></td>
-			</tr>
-			<tr>
-				<td>Enter Your Current Country:</td>
-				<td><form:input path="country" /></td>
-				<td><form:errors path="country" cssStyle="color: #ff0000;"/></td>
-			</tr>
-			<tr>
-				<td>Enter Your Email:</td>
-				<td><form:input path="email" /></td>
-				<td><form:errors path="email" cssStyle="color: #ff0000;"/></td>
-			</tr>
-			<tr>
-				<td>Enter Your LiteCoinAddress:</td>
-				<td><form:input path="liteCoinAddress" /></td>
-				<td><form:errors path="liteCoinAddress" cssStyle="color: #ff0000;"/></td>
-			</tr>
-			<tr>
-				<td>Enter Your Sponsor link:</td>
-				<td><form:input path="sponsorLink" /></td>
-				<td><form:errors path="sponsorLink" cssStyle="color: #ff0000;"/></td>
-			</tr>
-			<tr>
-				<td>Enter Your account password:</td>
-				<td><form:input path="accountPassword" /></td>
-				<td><form:errors path="accountPassword" cssStyle="color: #ff0000;"/></td>
-			</tr>
-			<tr>
-				<td>Confirm your account password:</td>
-				<td><form:input path="passwordConfirmation" /></td>
-				<td><form:errors path="passwordConfirmation" cssStyle="color: #ff0000;"/></td>
-			</tr>
-			<tr>
-				<td>Select your account type (User/Investor)</td>
-				<td><form:input path="userRole" /></td>
-				<td><form:errors path="userRole" cssStyle="color: #ff0000;"/></td>
-			</tr>
-			<tr>
-				<td><input type="submit" name="submit" value="Submit"></td>
-			</tr>
-		</table>	
+	
+
+		<div class="sign-up-page ">
+			<div class="attribute-container">
+				<div class="title-text ">Enter Your Desired User Id</div>
+				<div class="separator ">:</div>
+				<div class="value-container ">
+					<div class="value-text"><form:input path="accountId" /></div>
+					<div class="value-error-text"><form:errors path="accountId" cssStyle="color: #ff0000;"/></div>
+				</div>
+			</div>
+			
+			<div class="attribute-container">
+				<div class="title-text ">Enter Your First Name</div>
+				<div class="separator ">:</div>
+				<div class="value-container ">
+					<div class="value-text"><form:input path="accountFirstName"/></div>
+					<div class="value-error-text"><form:errors path="accountId" cssStyle="color: #ff0000;"/></div>
+				</div>
+			</div>
+			
+			<div class="attribute-container">
+				<div class="title-text ">Enter Your Last Name</div>
+				<div class="separator ">:</div>
+				<div class="value-container ">
+					<div class="value-text"><form:input path="accountLastName" /></div>
+					<div class="value-error-text"><form:errors path="accountLastName" cssStyle="color: #ff0000;"/></div>
+				</div>
+			</div>			
+			
+			<div class="attribute-container">
+				<div class="title-text ">Enter Your rank</div>
+				<div class="separator ">:</div>
+				<div class="value-container ">
+					<div class="value-text"><form:input path="rank" /></div>
+					<div class="value-error-text"><form:errors path="rank" cssStyle="color: #ff0000;"/></div>
+				</div>
+			</div>
+			
+			<div class="attribute-container">
+				<div class="title-text ">Enter Your Date of birth(YYYY-MM-DD)</div>
+				<div class="separator ">:</div>
+				<div class="value-container ">
+					<div class="value-text"><form:input path="dateOfBirth" type="text" id="datePicker"/></div>
+					<div class="value-error-text"><form:errors path="dateOfBirth" cssStyle="color: #ff0000;"/></div>
+				</div>
+			</div>
+			
+			<div class="attribute-container">
+				<div class="title-text ">Enter Your gender</div>
+				<div class="separator ">:</div>
+				<div class="value-container ">
+					<div class="value-text"><form:input path="gender" /></div>
+					<div class="value-error-text"><form:errors path="gender" cssStyle="color: #ff0000;"/></div>
+				</div>
+			</div>	
+			
+			<div class="attribute-container">
+				<div class="title-text ">Enter Your Mobile Number</div>
+				<div class="separator ">:</div>
+				<div class="value-container ">
+					<div class="value-text"><form:input path="mobileNumber" /></div>
+					<div class="value-error-text"><form:errors path="mobileNumber" cssStyle="color: #ff0000;"/></div>
+				</div>
+			</div>				
+
+			<div class="attribute-container">
+				<div class="title-text ">Enter Your Current Country</div>
+				<div class="separator ">:</div>
+				<div class="value-container ">
+					<div class="value-text"><form:input path="country" /></div>
+					<div class="value-error-text"><form:errors path="country" cssStyle="color: #ff0000;"/></div>
+				</div>
+			</div>	
+			
+			<div class="attribute-container">
+				<div class="title-text ">Enter Your Email</div>
+				<div class="separator ">:</div>
+				<div class="value-container ">
+					<div class="value-text"><form:input path="email" /></div>
+					<div class="value-error-text"><form:errors path="email" cssStyle="color: #ff0000;"/></div>
+				</div>
+			</div>	
+
+			<div class="attribute-container">
+				<div class="title-text ">Enter Your LiteCoinAddress</div>
+				<div class="separator ">:</div>
+				<div class="value-container ">
+					<div class="value-text"><form:input path="liteCoinAddress" /></div>
+					<div class="value-error-text"><form:errors path="liteCoinAddress" cssStyle="color: #ff0000;"/></div>
+				</div>
+			</div>	
+			
+			<div class="attribute-container">
+				<div class="title-text ">Enter Your Sponsor link</div>
+				<div class="separator ">:</div>
+				<div class="value-container ">
+					<div class="value-text"><form:input path="sponsorLink" /></div>
+					<div class="value-error-text"><form:errors path="sponsorLink" cssStyle="color: #ff0000;"/></div>
+				</div>
+			</div>	
+
+			<div class="attribute-container">
+				<div class="title-text ">Enter Your account password</div>
+				<div class="separator ">:</div>
+				<div class="value-container ">
+					<div class="value-text"><form:input path="accountPassword" /></div>
+					<div class="value-error-text"><form:errors path="accountPassword" cssStyle="color: #ff0000;"/></div>
+				</div>
+			</div>	
+			
+			<div class="attribute-container">
+				<div class="title-text ">Confirm your account password</div>
+				<div class="separator ">:</div>
+				<div class="value-container ">
+					<div class="value-text"><form:input path="passwordConfirmation" /></div>
+					<div class="value-error-text"><form:errors path="passwordConfirmation" cssStyle="color: #ff0000;"/></div>
+				</div>
+			</div>	
+
+			<div class="attribute-container">
+				<div class="title-text ">Select your account type (User/Investor)</div>
+				<div class="separator ">:</div>
+				<div class="value-container ">
+					<div class="value-text"><form:input path="userRole" /></div>
+					<div class="value-error-text"><form:errors path="userRole" cssStyle="color: #ff0000;"/></div>
+				</div>
+			</div>	
+			
+			
+			<div class="submit-button-container">
+				<input type="submit"  class="btn btn-success submit-button" name="submit" value="Submit">
+			</div>									
+			
+		</div>
+		
 	</form:form>
 </body>
 </html>

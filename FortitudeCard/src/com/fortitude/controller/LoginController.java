@@ -86,6 +86,12 @@ public class LoginController {
 		return "/signUp";
 	}
 	
+	@RequestMapping(value="/mainLayout",method = RequestMethod.GET)
+	public String mainLayout(Model model){
+		
+		return "/page/home";
+	}
+	
 	@RequestMapping(value="/signUp",method = RequestMethod.POST)
 	public String submitForm(Model model, @Validated AccountDto form, BindingResult result) throws SQLException{
 		model.addAttribute("form",form);
