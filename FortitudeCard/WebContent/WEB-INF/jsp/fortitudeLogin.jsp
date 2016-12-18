@@ -32,18 +32,38 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/css/style.css">
 
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/login.css">
+
 </head>
 
 <body>
 	<form:form id="loginForm" method="post" action="fortitudeLogin.html"
 		modelAttribute="loginBean">
-		<form:label path="id">Enter username</form:label>
-		<form:input id="id" name="id" path="id" />
-		<br>
-		<form:label path="password">Please enter your password</form:label>
-		<form:password id="password" name="password" path="password" />
-		<br>
-		<input type="submit" value="Login" />
+<%-- 		<form:label path="id">Enter username</form:label> --%>
+<%-- 		<form:input id="id" name="id" path="id" /> --%>
+<!-- 		<br> -->
+<%-- 		<form:label path="password">Please enter your password</form:label> --%>
+<%-- 		<form:password id="password" name="password" path="password" /> --%>
+<!-- 		<br> -->
+<!-- 		<input type="submit" value="Login" /> -->
+
+
+         		<div class="login-page">
+         			<div class="attribute-container">
+<%--          				<form:input id="id" name="id" path="id" placeholder="e-mail address"/> --%>
+         				<input type="text" id="id" name="id" path="id" path="id" placeholder="e-mail address"/>
+         			</div >
+         			<div class="attribute-container">
+         				<form:password id="password" name="password" path="password" placeholder="password"/>
+         			</div>
+         			<div class="attribute-container button-container">
+         				<input type="submit" value="Login" />
+         			</div>
+         		</div>
+
+
+
 	</form:form>
 </body>
 </html>

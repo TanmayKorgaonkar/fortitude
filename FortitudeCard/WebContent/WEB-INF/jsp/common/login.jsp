@@ -9,12 +9,6 @@
 <link rel="stylesheet"  href="${pageContext.request.contextPath}/resources/cssAdmin/style.css" />
 <script src="<c:url value ="${pageContext.request.contextPath}/resources/js/jquery.min.js"/>"></script>
 <script src="<c:url value ="${pageContext.request.contextPath}/resources/js/ddaccordion.js"/>"></script>
-
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/css/login.css">
-	
-<link rel="stylesheet"  href="${pageContext.request.contextPath}/resources/css/login.css" />
-
 <script type="text/javascript">
 ddaccordion.init({
 	headerclass: "submenuheader", //Shared CSS class name of headers group
@@ -67,47 +61,29 @@ ddaccordion.init({
          <a href="#" class="forgot_pass">Forgot password</a> 
          
          <form action="" method="post" class="niceform">
-         		
-         		
-         		<div class="login-page">
-         			<div class="attribute-container">
-         				<input type="text" name="" id="" size="54" placeholder="id"/>
-         			</div >
-         			<div class="attribute-container">
-         				<input type="text" name="" id="" size="54" placeholder="password"/>
-         			</div>
-         			<div class="attribute-container">
-         				<input type="checkbox" name="interests[]" id="" value="" /><label class="check_label">Remember me</label>
-         			</div>
-         			<div class="attribute-container button-container">
-         				<input type="submit" name="submit" id="submit" value="Enter" />
-         			</div>
-         		</div>
          
-         
-         
-<!--                 <fieldset> -->
-<!--                     <dl> -->
-<!--                         <dt><label for="email">Username:</label></dt> -->
-<!--                         <dd><input type="text" name="" id="" size="54" /></dd> -->
-<!--                     </dl> -->
-<!--                     <dl> -->
-<!--                         <dt><label for="password">Password:</label></dt> -->
-<!--                         <dd><input type="text" name="" id="" size="54" /></dd> -->
-<!--                     </dl> -->
+                <fieldset>
+                    <dl>
+                        <dt><label for="email">Username:</label></dt>
+                        <dd><input type="text" name="" id="" size="54" /></dd>
+                    </dl>
+                    <dl>
+                        <dt><label for="password">Password:</label></dt>
+                        <dd><input type="text" name="" id="" size="54" /></dd>
+                    </dl>
                     
-<!--                     <dl> -->
-<!--                         <dt><label></label></dt> -->
-<!--                         <dd> -->
-<!--                     <input type="checkbox" name="interests[]" id="" value="" /><label class="check_label">Remember me</label> -->
-<!--                         </dd> -->
-<!--                     </dl> -->
+                    <dl>
+                        <dt><label></label></dt>
+                        <dd>
+                    <input type="checkbox" name="interests[]" id="" value="" /><label class="check_label">Remember me</label>
+                        </dd>
+                    </dl>
                     
-<!--                      <dl class="submit"> -->
-<!--                     <input type="submit" name="submit" id="submit" value="Enter" /> -->
-<!--                      </dl> -->
+                     <dl class="submit">
+                    <input type="submit" name="submit" id="submit" value="Enter" />
+                     </dl>
                     
-<!--                 </fieldset> -->
+                </fieldset>
                 
          </form>
          </div>  

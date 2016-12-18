@@ -56,12 +56,12 @@ public class AccountController extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response, Connection transaction)throws SQLException, IOException, ServletException{
 		AccountDto accountDto = new AccountDto();
 		accountDto.setAccountId(request.getParameter("accountId"));
-		accountDto.setAccountName(request.getParameter("accountName"));
+//		accountDto.setAccountName(request.getParameter("accountName"));
 		accountDto.setAccountNickName(request.getParameter("accountNickName"));
 		accountDto.setCountry(request.getParameter("country"));
 		try{
 		Date dateOfBirth = new SimpleDateFormat("MM/dd/yyyy").parse(request.getParameter("dateOfBirth"));
-		accountDto.setDateOfBirth(dateOfBirth);
+//		accountDto.setDateOfBirth(dateOfBirth);
 	}catch (java.text.ParseException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -129,12 +129,12 @@ public class AccountController extends HttpServlet{
 	public static void main(String args[]) throws SQLException, IOException, ServletException{
 		AccountDto accountDto = new AccountDto();
 		accountDto.setAccountId("0");
-		accountDto.setAccountName("Rahul");
+//		accountDto.setAccountName("Rahul");
 		accountDto.setAccountNickName("Godha");
 		accountDto.setCountry("Singapore");
 		try{
 		Date dateOfBirth = new SimpleDateFormat("MM/dd/yyyy").parse("09/25/1991");
-		accountDto.setDateOfBirth(dateOfBirth);
+//		accountDto.setDateOfBirth(dateOfBirth);
 	}catch (java.text.ParseException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -148,6 +148,8 @@ public class AccountController extends HttpServlet{
 		accountDto.setTotalEarnings(Integer.parseInt("111111"));
 		doPost(accountDto);
 	}
+	
+	
 	
 	
 	

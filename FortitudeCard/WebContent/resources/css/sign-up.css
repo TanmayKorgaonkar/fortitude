@@ -1,0 +1,59 @@
+.sign-up-page {
+    margin: auto;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.24);
+    padding: 16px;
+    width: 60%;
+}
+
+.sign-up-page .attribute-container{
+    display: flex;
+    padding: 8px;
+    width: 100%;
+    margin: auto;
+}
+
+.sign-up-page .attribute-container input{
+	width: 100%;
+    border: 2px solid #d4d3d3;
+    border-radius: 4px;
+    height: 24px;
+}
+
+
+.sign-up-page .attribute-container .title-text{
+    color: #6C6C6B;
+    width: 40%;
+}
+
+.sign-up-page .attribute-container .separator{
+    padding: 0 32px;
+    color: #6C6C6B;
+    width: 10%;
+}
+
+.sign-up-page .attribute-container .value-container{
+	width: 50%;
+}
+
+.sign-up-page .attribute-container .value-container .value-text{
+	margin: 0 16px;
+}
+
+.sign-up-page .attribute-container .value-container .value-error-text{
+	
+}
+
+.sign-up-page .submit-button-container{
+    position: relative;
+    display: flex;
+    padding: 16px;
+    width: 100%;
+    margin: auto;
+}
+
+.sign-up-page .submit-button-container input{
+    margin: auto;
+    width: 40%;
+    border-radius: 0px;
+    background-color: red;
+}
