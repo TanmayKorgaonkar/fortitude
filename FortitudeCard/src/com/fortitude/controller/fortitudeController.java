@@ -1,13 +1,27 @@
 package com.fortitude.controller;
 
+import java.sql.SQLException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-@RequestMapping("/fortitud")
+
+import com.fortitude.dto.ProjectsDto;
+import com.fortitude.service.ProjectsService;
+@RequestMapping("/fortitude")
 @Controller
 public class fortitudeController {
+	
+	@Autowired
+	ProjectsService projectsService;
+	
 	@RequestMapping("/welcome")
 	public ModelAndView helloWorld() {
  
@@ -39,7 +53,21 @@ public class fortitudeController {
 		return "/page/account";
 	}
 	
+	@RequestMapping(value = "/projects", method = RequestMethod.GET)
+	public ModelAndView getProjects(HttpServletRequest request, HttpServletResponse response){
+		ModelAndView model = new ModelAndView("/page/projects");
+		ProjectsDto projectsDto = new ProjectsDto();
+		model.addObject("projectsBean", projectsDto);
+		return model;
+	}
 	
+	@RequestMapping(value = "/projects", method = RequestMethod.POST)
+	public ModelAndView setProjects(HttpServletRequest request, HttpServletResponse response, @ModelAttribute ("projectsBean") ProjectsDto projectsDto) throws SQLException{
+		ModelAndView model = null;
+		projectsService.addProjects(projectsDto);
+		model = new ModelAndView("/page/projects");
+		return model;
+	}
 	
 	
 	@RequestMapping(value = "/transfer", method = RequestMethod.GET)
