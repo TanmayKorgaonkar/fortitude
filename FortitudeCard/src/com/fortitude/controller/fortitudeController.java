@@ -53,19 +53,19 @@ public class fortitudeController {
 		return "/page/account";
 	}
 	
-	@RequestMapping(value = "/projects", method = RequestMethod.GET)
+	@RequestMapping(value = "/addProjects", method = RequestMethod.GET)
 	public ModelAndView getProjects(HttpServletRequest request, HttpServletResponse response){
-		ModelAndView model = new ModelAndView("/page/projects");
+		ModelAndView model = new ModelAndView("/page/projects/addProjects");
 		ProjectsDto projectsDto = new ProjectsDto();
 		model.addObject("projectsBean", projectsDto);
 		return model;
 	}
 	
-	@RequestMapping(value = "/projects", method = RequestMethod.POST)
+	@RequestMapping(value = "/addProjects", method = RequestMethod.POST)
 	public ModelAndView setProjects(HttpServletRequest request, HttpServletResponse response, @ModelAttribute ("projectsBean") ProjectsDto projectsDto) throws SQLException{
 		ModelAndView model = null;
 		projectsService.addProjects(projectsDto);
-		model = new ModelAndView("/page/projects");
+		model = new ModelAndView("/page/projects/addProjects");
 		return model;
 	}
 	

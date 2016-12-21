@@ -24,10 +24,10 @@
 <body>
 
 	<div id="header">
-		<%@ include file="../common/header.jsp"%>
+		<%@ include file="../../common/header.jsp"%>
 	</div>
 	<div id="content">
-		<form:form id="projectsForm" method="post" action="projects.html"
+		<form:form id="projectsForm" method="post" action="addProjects.html"
 			modelAttribute="projectsBean">
 			<%-- 		<form:label path="id">Enter username</form:label> --%>
 			<%-- 		<form:input id="id" name="id" path="id" /> --%>
@@ -67,7 +67,7 @@
 
 	</div>
 	<div id="footer">
-		<%@ include file="../common/footer.jsp"%>
+		<%@ include file="../../common/footer.jsp"%>
 	</div>
 
 </body>
