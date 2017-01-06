@@ -19,10 +19,26 @@
     	<property name="accountDao" ref="accountDao"></property>
     </bean>
     
+    <bean id="projectsService" class="com.fortitude.serviceImpl.ProjectsServiceImpl">
+    	<property name="projectsDao" ref="projectsDao"></property>
+    </bean>
+
+    <bean id="transferService" class="com.fortitude.serviceImpl.TransferServiceImpl">
+    	<property name="transferDao" ref="transferDao"></property>
+    </bean>
+    
     <bean id="accountDao" class="com.fortitude.dao.impl.AccountDaoImpl">
     	<property name="dataSource" ref="dataSource"></property>
     	<property name="userRoleDao" ref="userRoleDao"></property>
     </bean>
+    
+    <bean id="projectsDao" class="com.fortitude.dao.impl.ProjectsDaoImpl">
+    	<property name="dataSource" ref="dataSource"></property>
+    </bean>
+    
+    <bean id="transferDao" class="com.fortitude.dao.impl.TransferDaoImpl">
+    	<property name="dataSource" ref="dataSource"></property>
+    </bean>    
     
     <bean id="userRoleDao" class="com.fortitude.dao.impl.UserRoleDaoImpl">
     </bean>

@@ -5,6 +5,7 @@ import java.time.LocalDate;
 public class TransferDto {
 	private String fromAccountId;
 	private String toAccountId;
+	private long transferAmount;
 	private String message;
 	private LocalDate transferTime;
 	
@@ -12,10 +13,11 @@ public class TransferDto {
 		super();
 	}
 
-	public TransferDto(String fromAccountId, String toAccountId, String message, LocalDate transferTime) {
+	public TransferDto(String fromAccountId, String toAccountId,long transferAmount, String message, LocalDate transferTime) {
 		super();
 		this.fromAccountId = fromAccountId;
 		this.toAccountId = toAccountId;
+		this.transferAmount = transferAmount;
 		this.message = message;
 		this.transferTime = transferTime;
 	}
@@ -34,6 +36,14 @@ public class TransferDto {
 
 	public void setToAccountId(String toAccountId) {
 		this.toAccountId = toAccountId;
+	}
+	
+	public long getTransferAmount() {
+		return transferAmount;
+	}
+
+	public void setTransferAmount(long transferAmount) {
+		this.transferAmount = transferAmount;
 	}
 
 	public String getMessage() {

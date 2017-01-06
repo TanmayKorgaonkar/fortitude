@@ -14,13 +14,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fortitude.dto.ProjectsDto;
+import com.fortitude.dto.TransferDto;
 import com.fortitude.service.ProjectsService;
+import com.fortitude.service.TransferService;
 @RequestMapping("/fortitude")
 @Controller
 public class fortitudeController {
 	
 	@Autowired
 	ProjectsService projectsService;
+	
+	@Autowired 
+	TransferService transferService;
+	
 	
 	@RequestMapping("/welcome")
 	public ModelAndView helloWorld() {
@@ -70,14 +76,17 @@ public class fortitudeController {
 	}
 	
 	
-	@RequestMapping(value = "/transfer", method = RequestMethod.GET)
-	public String getTransfer(Model model){
+	@RequestMapping(value = "/transferFunds", method = RequestMethod.GET)
+	public ModelAndView setTransferFunds(HttpServletRequest request, HttpServletResponse response, @ModelAttribute ("transferBean") TransferDto transferDto) throws SQLException{
 //		model.addAttribute("account", accountService.getAccount("temp-account"));
+		ModelAndView model = null;
+		
 		/**
 		 * TODO
 		 * return transfer page
 		 */
-		return "/page/account";
+		return new ModelAndView("");
+		//return "/page/account";
 	}
 	
 	@RequestMapping(value = "/invest", method = RequestMethod.GET)

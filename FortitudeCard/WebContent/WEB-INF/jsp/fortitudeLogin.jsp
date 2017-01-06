@@ -31,6 +31,9 @@
 	href="${pageContext.request.contextPath}/resources/css/responsive.css">
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/css/style.css">
+	
+<script src="${pageContext.request.contextPath}/resources/js/app/signup-app/signup.js"/></script>
+	
 
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/css/login.css">
@@ -58,8 +61,14 @@
          				<form:password id="password" name="password" path="password" placeholder="password"/>
          			</div>
          			<div class="attribute-container button-container">
-         				<input type="submit" value="Login" />
+         				<input type="submit" value="Login" name="loginButton"/>
          			</div>
+         			<!-- 
+         			Will not work currently. Tanmay has to do. 
+         			        			<div class="attribute-container button-container">
+         				<input type="submit" value="SignUp" name="signupButton" onclick="redirectToSignUpPage('signUp.html')"/>
+         			</div>
+         			 -->
          		</div>
 
 
