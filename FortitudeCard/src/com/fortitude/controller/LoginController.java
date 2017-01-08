@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -53,6 +54,9 @@ public class LoginController {
 	@RequestMapping(value="/fortitudeLogin", method=RequestMethod.POST)
 	public ModelAndView executeLogin(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("loginBean")LoginDto loginDto){
 		ModelAndView model = null;
+		if(request.equals("SignUp")){
+			System.out.println("signup button is clicked");
+		}
 		try{
 			boolean isValidUser = loginDelegate.isValidAccount(loginDto.getId(), loginDto.getPassword());
 			if(isValidUser){
@@ -79,10 +83,19 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="/signUp",method = RequestMethod.GET)
-	public String initForm(Model model){
+	public String initForm(Map<String, Object> model){
 		AccountDto signUp = new AccountDto();
-		model.addAttribute("signUp", signUp);
-		initModelList(model);
+		model.put("signUp", signUp);
+		List<String> genderList = new ArrayList<>();
+		genderList.add("F");
+		genderList.add("M");
+		model.put("genderList", genderList);
+		List<String> userRoleList = new ArrayList<>();
+		userRoleList.add("User");
+		userRoleList.add("Investor");
+		model.put("userRole", userRoleList);
+		//model.addAttribute("signUp", signUp);
+	//	initModelList(model);
 		return "/signUp";
 	}
 	
@@ -97,7 +110,7 @@ public class LoginController {
 		model.addAttribute("form",form);
 		String returnValue = "successForm";
 		if(result.hasErrors()){
-			initModelList(model);
+		//	initModelList(model);
 			returnValue = "/homepage";
 		}else{
 			loginDelegate.signupUser(form);
@@ -105,11 +118,11 @@ public class LoginController {
 		return returnValue;
 	}
 	
-	private void initModelList(Model model){
+	/*private void initModelList(Map<String, Object> model){
 		List<String> userRoles = new ArrayList<>();
 		userRoles.add("User");
 		userRoles.add("Investor");
 		model.addAttribute(userRoles);
-	}
+	}*/
 	
 }

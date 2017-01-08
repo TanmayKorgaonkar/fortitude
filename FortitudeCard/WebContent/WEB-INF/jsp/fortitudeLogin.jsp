@@ -31,6 +31,9 @@
 	href="${pageContext.request.contextPath}/resources/css/responsive.css">
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/css/style.css">
+	
+<script src="${pageContext.request.contextPath}/resources/js/app/signup-app/signup.js"/></script>
+	
 
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/css/login.css">
@@ -65,6 +68,12 @@
 	         		<div class="link-container">
          				<a href="signUp.html">Sign up</a>
          			</div>
+         			<!-- 
+         			Will not work currently. Tanmay has to do. 
+         			        			<div class="attribute-container button-container">
+         				<input type="submit" value="SignUp" name="signupButton" onclick="redirectToSignUpPage('signUp.html')"/>
+         			</div>
+         			 -->
          		</div>
 
 

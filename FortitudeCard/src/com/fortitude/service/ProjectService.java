@@ -10,4 +10,5 @@ import com.fortitude.dto.ProjectDto;
 
 public interface ProjectService {
 	public List<ProjectDto> getAllProject();
+	void addProjects(ProjectDto projectDto) throws SQLException;
 }

@@ -9,23 +9,29 @@ public class ProjectDto {
 	private String projectCategory;
 	private String projectCost;
 	private String projectDetails;
+	private String projectOwner;
 	
 	
 	
+
+
 	public ProjectDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public ProjectDto(String projectId, String projectName, String projectCategory, String projectCost,
-			String projectDetails) {
+			String projectDetails, String projectOwner) {
 		super();
 		this.projectId = projectId;
 		this.projectName = projectName;
 		this.projectCategory = projectCategory;
 		this.projectCost = projectCost;
 		this.projectDetails = projectDetails;
+		this.projectOwner = projectOwner;
 	}
+
+
 
 	public String getProjectId() {
 		return projectId;
@@ -67,7 +73,13 @@ public class ProjectDto {
 		this.projectDetails = projectDetails;
 	}
 		
+	public String getProjectOwner() {
+		return projectOwner;
+	}
 
+	public void setProjectOwner(String projectOwner) {
+		this.projectOwner = projectOwner;
+	}
 
 
 	

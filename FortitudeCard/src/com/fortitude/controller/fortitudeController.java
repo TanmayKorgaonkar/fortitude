@@ -6,19 +6,30 @@ import com.mysql.jdbc.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
+import java.sql.SQLException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-@RequestMapping("/fortitud")
+
+import com.fortitude.dto.TransferDto;
+import com.fortitude.service.TransferService;
+@RequestMapping("/fortitude")
 @Controller
 public class fortitudeController {
 	
 	@Autowired
 	ProjectService projectService;
+	
+	@Autowired 
+	TransferService transferService;
 	
 	
 	@RequestMapping("/welcome")
@@ -51,17 +62,34 @@ public class fortitudeController {
 		return "/page/account";
 	}
 	
+	@RequestMapping(value = "/addProjects", method = RequestMethod.GET)
+	public ModelAndView getProjects(HttpServletRequest request, HttpServletResponse response){
+		ModelAndView model = new ModelAndView("/page/projects/addProjects");
+		ProjectDto projectsDto = new ProjectDto();
+		model.addObject("projectsBean", projectsDto);
+		return model;
+	}
+	
+	@RequestMapping(value = "/addProjects", method = RequestMethod.POST)
+	public ModelAndView setProjects(HttpServletRequest request, HttpServletResponse response, @ModelAttribute ("projectsBean") ProjectDto projectsDto) throws SQLException{
+		ModelAndView model = null;
+		projectService.addProjects(projectsDto);
+		model = new ModelAndView("/page/projects/addProjects");
+		return model;
+	}
 	
 	
-	
-	@RequestMapping(value = "/transfer", method = RequestMethod.GET)
-	public String getTransfer(Model model){
+	@RequestMapping(value = "/transferFunds", method = RequestMethod.GET)
+	public ModelAndView setTransferFunds(HttpServletRequest request, HttpServletResponse response, @ModelAttribute ("transferBean") TransferDto transferDto) throws SQLException{
 //		model.addAttribute("account", accountService.getAccount("temp-account"));
+		ModelAndView model = null;
+		
 		/**
 		 * TODO
 		 * return transfer page
 		 */
-		return "/page/account";
+		return new ModelAndView("");
+		//return "/page/account";
 	}
 	
 	@RequestMapping(value = "/invest", method = RequestMethod.GET)

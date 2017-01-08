@@ -69,6 +69,24 @@ public class ProjectDaoImpl implements ProjectDao {
 		}
 		return null;
 	}
+	
+	@Override
+	public void addNewProject(ProjectDto projectDto) {
+		try{
+			Connection connection = (Connection)dataSource.getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(ADD_PROJECT);
+			preparedStatement.setString(1, projectDto.getProjectId());
+			preparedStatement.setString(2, projectDto.getProjectName());
+			preparedStatement.setString(3, projectDto.getProjectOwner());
+			preparedStatement.setString(4, projectDto.getProjectCost());
+			preparedStatement.executeUpdate();
+
+			System.out.println("Project Added.");
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		
+	}
 
 	private ProjectDto makeProjectDto(ResultSet resultSet) throws SQLException {
 		// TODO Auto-generated method stub
@@ -83,5 +101,5 @@ public class ProjectDaoImpl implements ProjectDao {
 	}
 
 	private static String GET_ALL_PROJECTS = "Select * from projects";
-	
+	public final static String ADD_PROJECT = "INSERT INTO PROJECTS(project_id, project_name, project_owner, project_amount) values (?, ?, ?, ?)";
 }
