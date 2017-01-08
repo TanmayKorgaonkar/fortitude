@@ -16,12 +16,25 @@ body {
 }
 
 .header-container .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover{
-	color: #c00;
+	color: white;
 	border-bottom: 3px solid #c00;
 }
 
 .header-container .navbar-inverse .navbar-nav>li>a{
 	color: black;
+}
+
+.header-container .navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover{
+	background-color: black;
+	border-bottom: 3px solid #c00;
+}
+
+.header-container .navbar-inverse .navbar-brand{
+	color: #9d9d9d;
+}
+
+.header-container .navbar-inverse .navbar-brand:hover{
+	color: #c00;
 }
 
 .mega-dropdown {

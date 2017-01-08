@@ -21,7 +21,7 @@
 <div id="header">
 	<%@ include file="../common/header.jsp" %>
 </div>
-<div id="content">
+<div id="content" class="container">
 
 </div>
 <div id="footer">

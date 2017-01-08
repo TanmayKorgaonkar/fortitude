@@ -52,6 +52,7 @@
 			<li class="dropdown mega-dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Invest<span class="caret"></span></a>				
 				<ul class="dropdown-menu ">
+					<li><a href="projects.html">Projects</a></li>
 					<li><a href="#">Account Summery</a></li>
 					<li><a href="#">Add account</a></li>
                     <li><a href="#">Single blog page</a></li>

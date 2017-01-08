@@ -50,15 +50,20 @@
 
 
          		<div class="login-page">
-         			<div class="attribute-container">
-<%--          				<form:input id="id" name="id" path="id" placeholder="e-mail address"/> --%>
-         				<input type="text" id="id" name="id" path="id" path="id" placeholder="e-mail address"/>
-         			</div >
-         			<div class="attribute-container">
-         				<form:password id="password" name="password" path="password" placeholder="password"/>
-         			</div>
-         			<div class="attribute-container button-container">
-         				<input type="submit" value="Login" />
+         			<div class="main-container">
+	         			<div class="attribute-container">
+	<%--          				<form:input id="id" name="id" path="id" placeholder="e-mail address"/> --%>
+	         				<input type="text" id="id" name="id" path="id" path="id" placeholder="e-mail address"/>
+	         			</div >
+	         			<div class="attribute-container">
+	         				<form:password id="password" name="password" path="password" placeholder="password"/>
+	         			</div>
+	         			<div class="attribute-container button-container">
+	         				<input type="submit" value="Login" />
+	         			</div>
+	         		</div>
+	         		<div class="link-container">
+         				<a href="signUp.html">Sign up</a>
          			</div>
          		</div>
 

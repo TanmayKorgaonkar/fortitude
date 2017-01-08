@@ -1,8 +1,15 @@
-.login-page {
+.login-page .main-container{
 	width: 20%;
 	margin: 200px auto 0 auto;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.24);
     padding: 16px;
+}
+
+.login-page .link-container{
+    width: 20%;
+    margin: 0px auto 0 auto;
+    padding: 16px;
+    text-align: center;
 }
 
 .login-page .attribute-container{

@@ -1,5 +1,13 @@
 package com.fortitude.controller;
 
+import com.fortitude.dto.ProjectDto;
+import com.fortitude.service.ProjectService;
+import com.mysql.jdbc.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,6 +16,11 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/fortitud")
 @Controller
 public class fortitudeController {
+	
+	@Autowired
+	ProjectService projectService;
+	
+	
 	@RequestMapping("/welcome")
 	public ModelAndView helloWorld() {
  
@@ -35,7 +48,6 @@ public class fortitudeController {
 		 *		2.5	Buy Lite coin
 		 *	and return account page after filing this information
 		 */
-		
 		return "/page/account";
 	}
 	
@@ -65,8 +77,8 @@ public class fortitudeController {
 		return "/page/account";
 	}
 	
-	@RequestMapping(value = "/invest", method = RequestMethod.POST)
-	public String investRequest(Model model,String investDto){
+	@RequestMapping(value = "/projects", method = RequestMethod.GET)
+	public String getProjects(Model model,String investDto){
 //		model.addAttribute("account", accountService.getAccount("temp-account"));
 		/**
 		 * TODO
@@ -74,7 +86,11 @@ public class fortitudeController {
 		 * 
 		 * return invest page
 		 */
-		return "/page/account";
+		
+		List<ProjectDto> projects = projectService.getAllProject();
+		model.addAttribute("projects", projects);
+		
+		return "/page/projects";
 	}
 	
 	@RequestMapping(value = "/support", method = RequestMethod.GET)
