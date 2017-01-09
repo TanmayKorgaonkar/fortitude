@@ -40,6 +40,7 @@
 				</div>
 				<a id="project4-popover-link" tabindex="0" class="invest-title-project-header" role="button" data-placement="bottom" data-trigger="focus">${project.projectName}</a>
 				<div class="invest-title-project-name">${project.projectCategory}</div>
+				<div class="invest-title-project-cost">${project.projectCost}</div>
 				<div class="invest-title-project-details">${project.projectDetails}</div>
 			</div>
 		
