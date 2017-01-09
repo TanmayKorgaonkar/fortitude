@@ -8,19 +8,16 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context.xsd">
+        
     <mvc:annotation-driven />               
 	<context:component-scan base-package="com.fortitude.controller" />
-    <mvc:resources mapping="/resources/**" location="/WebContent/resources/" />
+    <mvc:resources mapping="/resources/**" location="/resources/" />
     <bean id="loginDelegate" class="com.fortitude.delegate.LoginDelegate">
     	<property name="accountService" ref="accountService"></property>
     </bean>
     
     <bean id="accountService" class="com.fortitude.serviceImpl.AccountServiceImpl">
     	<property name="accountDao" ref="accountDao"></property>
-    </bean>
-    
-    <bean id="projectsService" class="com.fortitude.serviceImpl.ProjectsServiceImpl">
-    	<property name="projectsDao" ref="projectsDao"></property>
     </bean>
 
     <bean id="transferService" class="com.fortitude.serviceImpl.TransferServiceImpl">
@@ -32,7 +29,12 @@
     	<property name="userRoleDao" ref="userRoleDao"></property>
     </bean>
     
-    <bean id="projectsDao" class="com.fortitude.dao.impl.ProjectsDaoImpl">
+        
+    <bean id="projectService" class="com.fortitude.serviceImpl.ProjectServiceImpl">
+    	<property name="projectDao" ref="projectDao"></property>
+    </bean>
+    
+    <bean id="projectDao" class="com.fortitude.dao.impl.ProjectDaoImpl">
     	<property name="dataSource" ref="dataSource"></property>
     </bean>
     
@@ -65,4 +67,5 @@
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+	
 </beans>

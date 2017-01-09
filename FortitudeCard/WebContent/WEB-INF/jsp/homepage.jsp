@@ -941,17 +941,17 @@
 
 <script src="<c:url value ="http://code.jquery.com/jquery-1.9.1.min.js"/>"></script>
 <script src="<c:url value ="/resources/js/jquery-1.11.3.min.js"/>"></script>
+<script src="<c:url value="/resources/js/jquery-ui.js"/>"></script>
+<script src="<c:url value="/resources/js/jquery.counterup.min.js"/>"></script>
+<script src="<c:url value= "/resources/js/jquery.nicescroll.min.js"/>"></script>
+<script src="<c:url value="/resources/js/jquery.easing.min.js"/>"></script>
 
 <script src="<c:url value ="/resources/js/isotope.pkgd.min.js"/>"></script>
 <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
-<script src="<c:url value="/resources/js/jquery-ui.js"/>"></script>
 <script src="<c:url value="/resources/js/appear.js"/>"></script>
-<script src="<c:url value="/resources/js/jquery.counterup.min.js"/>"></script>
 <script src="<c:url value="/resources/js/waypoints.min.js"/>"></script>
 <script src="<c:url value="/resources/js/owl.carousel.min.js"/>"></script>
 <script src="<c:url value="/resources/js/showHide.js"/>"></script>
-<script src="<c:url value= "/resources/js/jquery.nicescroll.min.js"/>"></script>
-<script src="<c:url value="/resources/js/jquery.easing.min.js"/>"></script>
 <script src="<c:url value="/resources/js/scrolling-nav.js"/>"></script>
 <script src="<c:url value="/resources/js/plugins.js"/>"></script>
 <!-- Google Map js -->

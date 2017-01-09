@@ -1,5 +1,11 @@
 package com.fortitude.controller;
 
+import com.fortitude.dto.ProjectDto;
+import com.fortitude.service.ProjectService;
+import com.mysql.jdbc.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.List;
 import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,16 +19,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.fortitude.dto.ProjectsDto;
 import com.fortitude.dto.TransferDto;
-import com.fortitude.service.ProjectsService;
 import com.fortitude.service.TransferService;
 @RequestMapping("/fortitude")
 @Controller
 public class fortitudeController {
 	
 	@Autowired
-	ProjectsService projectsService;
+	ProjectService projectService;
 	
 	@Autowired 
 	TransferService transferService;
@@ -55,22 +59,21 @@ public class fortitudeController {
 		 *		2.5	Buy Lite coin
 		 *	and return account page after filing this information
 		 */
-		
 		return "/page/account";
 	}
 	
 	@RequestMapping(value = "/addProjects", method = RequestMethod.GET)
 	public ModelAndView getProjects(HttpServletRequest request, HttpServletResponse response){
 		ModelAndView model = new ModelAndView("/page/projects/addProjects");
-		ProjectsDto projectsDto = new ProjectsDto();
+		ProjectDto projectsDto = new ProjectDto();
 		model.addObject("projectsBean", projectsDto);
 		return model;
 	}
 	
 	@RequestMapping(value = "/addProjects", method = RequestMethod.POST)
-	public ModelAndView setProjects(HttpServletRequest request, HttpServletResponse response, @ModelAttribute ("projectsBean") ProjectsDto projectsDto) throws SQLException{
+	public ModelAndView setProjects(HttpServletRequest request, HttpServletResponse response, @ModelAttribute ("projectsBean") ProjectDto projectsDto) throws SQLException{
 		ModelAndView model = null;
-		projectsService.addProjects(projectsDto);
+		projectService.addProjects(projectsDto);
 		model = new ModelAndView("/page/projects/addProjects");
 		return model;
 	}
@@ -102,8 +105,8 @@ public class fortitudeController {
 		return "/page/account";
 	}
 	
-	@RequestMapping(value = "/invest", method = RequestMethod.POST)
-	public String investRequest(Model model,String investDto){
+	@RequestMapping(value = "/projects", method = RequestMethod.GET)
+	public String getProjects(Model model,String investDto){
 //		model.addAttribute("account", accountService.getAccount("temp-account"));
 		/**
 		 * TODO
@@ -111,7 +114,11 @@ public class fortitudeController {
 		 * 
 		 * return invest page
 		 */
-		return "/page/account";
+		
+		List<ProjectDto> projects = projectService.getAllProject();
+		model.addAttribute("projects", projects);
+		
+		return "/page/projects";
 	}
 	
 	@RequestMapping(value = "/support", method = RequestMethod.GET)
