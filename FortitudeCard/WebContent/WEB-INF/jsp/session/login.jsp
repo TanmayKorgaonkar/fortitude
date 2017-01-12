@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@page session="true"%>
+
 <!doctype html>
 <html class="no-js" lang="">
 <head>
@@ -40,9 +40,9 @@
 
 </head>
 
-<body>
-	<form:form id="loginForm" method="post" action="fortitudeLogin.html"
-		modelAttribute="loginBean">
+<body onload='document.loginForm.username.focus();'>
+	<form name='loginForm'
+			action="<c:url value='/j_spring_security_check' />" method='POST'>
 <%-- 		<form:label path="id">Enter username</form:label> --%>
 <%-- 		<form:input id="id" name="id" path="id" /> --%>
 <!-- 		<br> -->
@@ -53,16 +53,26 @@
 
 
          		<div class="login-page">
+         		
+         				<c:if test="${not empty error}">
+			<div class="error">${error}</div>
+		</c:if>
+		<c:if test="${not empty msg}">
+			<div class="msg">${msg}</div>
+		</c:if>
+         		
+         		
          			<div class="main-container">
 	         			<div class="attribute-container">
 	<%--          				<form:input id="id" name="id" path="id" placeholder="e-mail address"/> --%>
-	         				<input type="text" id="id" name="id" path="id" path="id" placeholder="e-mail address"/>
+	         				<input type='text' name='username' path="id" path="id" placeholder="e-mail address"/>
 	         			</div >
 	         			<div class="attribute-container">
-	         				<form:password id="password" name="password" path="password" placeholder="password"/>
+	         				<input type='password' name='password' path="password" placeholder="password"/>
 	         			</div>
 	         			<div class="attribute-container button-container">
-	         				<input type="submit" value="Login" />
+	         				<input name="submit" type="submit"
+						value="submit" />
 	         			</div>
 	         		</div>
 	         		<div class="link-container">
@@ -76,8 +86,9 @@
          			 -->
          		</div>
 
+			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
 
-
-	</form:form>
+	</form>
 </body>
 </html>
