@@ -10,15 +10,36 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Projects</title>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/cssAdmin/main-layout.css" />
+
+<link href="https://fonts.googleapis.com/css?family=Lato:400,300,700"
+	rel='stylesheet' type='text/css'>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/normalize.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/main.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/lib/bootstrap.min.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/owl.carousel.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/responsive.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/style.css">
+
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/cssAdmin/main-layout.css" />
 
 <!-- Import Library Files -->
-<script src="${pageContext.request.contextPath}/resources/js/lib/jquery.min.js"/></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/lib/jquery.min.js" /></script>
 
 
 
 <!-- Import Application Files -->
-<script src="${pageContext.request.contextPath}/resources/js/app/common-app.js"/></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/app/common-app.js" /></script>
 
 </head>
 <body>
@@ -27,8 +48,8 @@
 		<%@ include file="../../common/header.jsp"%>
 	</div>
 	<div id="content">
-		<form:form id="projectsForm" method="post" action="addProjects.html"
-			modelAttribute="projectsBean">
+		<form:form id="projectsForm" method="post" action="addProjects.html" commandName="projectsBean">
+			<%--modelAttribute="projectsBean">--%>
 			<%-- 		<form:label path="id">Enter username</form:label> --%>
 			<%-- 		<form:input id="id" name="id" path="id" /> --%>
 			<!-- 		<br> -->
@@ -40,9 +61,8 @@
 
 			<div class="add-projects">
 				<div class="attribute-container">
-				
-					<form:input type="text" id="projectId" name="projectId" path="projectId"
-						placeholder="Project Id" />
+					<form:input type="text" id="projectId" name="projectId"
+						path="projectId" placeholder="Project Id" />
 				</div>
 				<div class="attribute-container">
 					<form:input type="text" id="projectName" name="projectName"
@@ -53,8 +73,16 @@
 						path="projectOwner" placeholder="Project Owner" />
 				</div>
 				<div class="attribute-container">
-					<form:input type="text" id="projectAmount" name="projectAmount"
-						path="projectAmount" placeholder="Project Amount" />
+					<form:input type="text" id="projectCost" name="projectCost"
+						path="projectCost" placeholder="Project Amount" />
+				</div>
+				<div class="attribute-container">
+					<form:select path="projectCategory" id="projectCategory"
+						items="${categoryList}" placeholder="Project Category" />
+				</div>
+				<div class="attribute-container">
+					<form:input type="text" id="projectDetails" name="projectDetails"
+						path="projectDetails" placeholder="Project Details" />
 				</div>
 				<div class="attribute-container button-container">
 					<input type="submit" value="Create" />

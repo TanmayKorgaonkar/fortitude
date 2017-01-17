@@ -79,6 +79,8 @@ public class ProjectDaoImpl implements ProjectDao {
 			preparedStatement.setString(2, projectDto.getProjectName());
 			preparedStatement.setString(3, projectDto.getProjectOwner());
 			preparedStatement.setString(4, projectDto.getProjectCost());
+			preparedStatement.setString(5, projectDto.getProjectCategory());
+			preparedStatement.setString(6, projectDto.getProjectDetails());
 			preparedStatement.executeUpdate();
 
 			System.out.println("Project Added.");
@@ -93,13 +95,14 @@ public class ProjectDaoImpl implements ProjectDao {
 		ProjectDto project = new ProjectDto();
 		project.setProjectId(resultSet.getString(1));
 		project.setProjectName(resultSet.getString(2));
-		project.setProjectCost(resultSet.getString(3));
-		project.setProjectCategory(resultSet.getString(4));
-		project.setProjectDetails(resultSet.getString(5));
+		project.setProjectOwner(resultSet.getString(3));
+		project.setProjectCost(resultSet.getString(4));
+		project.setProjectCategory(resultSet.getString(5));
+		project.setProjectDetails(resultSet.getString(6));
 	
 		return project;
 	}
 
 	private static String GET_ALL_PROJECTS = "Select * from projects";
-	public final static String ADD_PROJECT = "INSERT INTO PROJECTS(project_id, project_name, project_owner, project_amount) values (?, ?, ?, ?)";
+	public final static String ADD_PROJECT = "INSERT INTO PROJECTS(project_id, project_name, project_owner, project_cost, project_category, project_details) values (?, ?, ?, ?, ?, ?)";
 }

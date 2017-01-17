@@ -6,10 +6,10 @@ public class ProjectDto {
 	
 	private String projectId;
 	private String projectName;
-	private String projectCategory;
-	private String projectCost;
-	private String projectDetails;
 	private String projectOwner;
+	private String projectCost;
+	private String projectCategory;
+	private String projectDetails;
 	
 	
 	

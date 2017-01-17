@@ -40,12 +40,13 @@
 				<div class="invest-title-project-image" style="background-image : url(${pageContext.request.contextPath}/resources/img/${project.projectId}.jpg)">
 				</div>
 				<div class="invest-project-cart-inner-container">
-					<dir class="link">
+					<div class="link">
 					<a id="project4-popover-link" tabindex="0" class="invest-title-project-header" role="button" data-placement="bottom" data-trigger="focus">${project.projectName}</a>
-					</dir>
-					<dir class="invest-project-more-option link">
-					<a id="pop-over-operner" class="glyphicon glyphicon-option-vertical" data-toggle="popover" data-placement="bottom"  data-trigger="click" data-content="Invest" role="button"></a></dir>
 					</div>
+					<div class="invest-project-more-option link">
+					<a id="pop-over-operner" class="glyphicon glyphicon-option-vertical" data-toggle="popover" data-placement="bottom"  data-trigger="click" data-content="Invest" role="button"></a>
+					</div>
+				</div>
 				<div class="invest-title-project-name invest-project-cart-inner-container">${project.projectCategory}</div>
 				<div class="invest-title-project-details invest-project-cart-inner-container">${project.projectDetails}</div>
 			</div>

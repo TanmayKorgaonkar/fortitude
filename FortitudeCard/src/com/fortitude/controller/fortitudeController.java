@@ -5,7 +5,9 @@ import com.fortitude.service.ProjectService;
 import com.mysql.jdbc.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -63,11 +65,23 @@ public class fortitudeController {
 	}
 	
 	@RequestMapping(value = "/addProjects", method = RequestMethod.GET)
-	public ModelAndView getProjects(HttpServletRequest request, HttpServletResponse response){
-		ModelAndView model = new ModelAndView("/page/projects/addProjects");
+//	public ModelAndView getProjects(HttpServletRequest request, HttpServletResponse response){
+	public String getProjects(HttpServletRequest request, HttpServletResponse response,Map<String, Object> model){
+		//ModelAndView model = new ModelAndView("/page/projects/addProjects");
+		
 		ProjectDto projectsDto = new ProjectDto();
-		model.addObject("projectsBean", projectsDto);
-		return model;
+		model.put("projectsBean", projectsDto);
+		//model.addObject("projectsBean", projectsDto);
+		List<String> categoryList = new ArrayList<>();
+		categoryList.add("Real Estate");
+		categoryList.add("Technology Startup");
+		categoryList.add("Financial Startup");
+		categoryList.add("Finance");
+		categoryList.add("Renewable Energy");
+		categoryList.add("Others");
+		model.put("categoryList", categoryList);
+		
+		return "/page/projects/addProjects";
 	}
 	
 	@RequestMapping(value = "/addProjects", method = RequestMethod.POST)
