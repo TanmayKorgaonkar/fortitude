@@ -3,7 +3,39 @@
     color: #00AFF0;
     font-weight: 300;
 }
+.invest-project-container:hover .invest-project-more-option{
+	display:block;
+	width: 16px;
+    height: 16px;
+}
 
+.invest-project-container .popover-content{
+	    padding: 13px 28px;
+}
+
+.invest-project-container .popover{
+	width: 100px;
+    height: 48px;
+    border-radius: 2px;
+}
+
+.invest-project-container .popover.bottom>.arrow{
+	display: none;
+}
+
+.invest-project-cart-inner-container{
+	display: flex;
+}
+.invest-project-cart-inner-container .link{
+    width: 100%;
+    padding: 0;
+}
+
+.invest-project-more-option{
+	display:none;
+	height:16px;
+	width:16px;
+}
 .invest-title-header{
 	font-size: 38px;
     color: grey;
