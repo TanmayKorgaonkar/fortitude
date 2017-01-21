@@ -1,11 +1,42 @@
-CREATE TABLE `projects` (
-  `project_id` varchar(50) NOT NULL,
-  `project_name` varchar(100) DEFAULT NULL,
-  `project_cost` varchar(20) DEFAULT NULL,
-  `project_category` varchar(100) DEFAULT NULL,
-  `project_details` varchar(1024) DEFAULT NULL,
-  PRIMARY KEY (`project_id`)
+
+
+CREATE table FortitudeDB.invest (
+user_id VARCHAR(45) NOT NULL,
+project_id VARCHAR(99) NOT NULL,
+investment_amount BIGINT NOT NULL,
+interest_per_month FLOAT NOT NULL,
+date_of_investment DATE NOT NULL,
+is_active BOOLEAN default false NOT NULL,
+FOREIGN KEY (user_id) REFERENCES FortitudeDB.accounts(account_id),
+FOREIGN KEY (project_id) REFERENCES FortitudeDB.projects(project_id),
+PRIMARY KEY(user_id, project_id, date_of_investment)
+);
+
+
+CREATE TABLE FortitudeDB.projects (
+project_id VARCHAR(45) NOT NULL,
+project_name VARCHAR(99) NOT NULL,
+project_owner VARCHAR(45) NOT NULL,
+project_amount BIGINT,
+project_details VARCHAR(999),
+project_external_link VARCHAR(555),
+minimum_amount_to_invest float,
+project_start_time DATE NOT NULL,
+project_scheduled_end_time DATE default '2099-12-12',
+project_actual_end_time DATE default '2099-12-12',
+target_met BOOLEAN default false,
+returned_promised FLOAT NOT NULL,
+return_type VARCHAR(30),
+FOREIGN KEY (project_owner) REFERENCES FortitudeDB.accounts(account_id),
+PRIMARY KEY(project_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE FortitudeDB.projects_category (
+project_id VARCHAR(45) NOT NULL,
+category VARCHAR(90) NOT NULL,
+FOREIGN KEY (project_id) REFERENCES fortitudedb.projects(project_id),
+PRIMARY KEY (project_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `transfer` (
   `from_account_id` varchar(45) NOT NULL,

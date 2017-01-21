@@ -170,8 +170,7 @@ public class AccountDaoImpl implements AccountDao{
 		String sponsorLink = resultSet.getString(12);
 		Long totalEarnings = resultSet.getLong(13);
 		String accountPassword = resultSet.getString(14);
-		String passwordConfirmation = resultSet.getString(15);
-		String userRole = resultSet.getString(16);
+		String userRole = resultSet.getString(15);
 		
 		AccountDto accountDto = new AccountDto(accountId, accountFirstName,
 				accountLastName, accountNickName, rank, dateOfBirth, 
@@ -184,23 +183,23 @@ public class AccountDaoImpl implements AccountDao{
 	
 	@Override
 	public AccountDto getAccountById(String accountId) throws SQLException {
-		
-		
+		AccountDto accountDto = new AccountDto();
 		try{
 		Connection connection = dataSource.getConnection();
 		PreparedStatement preparedStatement = connection.prepareStatement(GET_ACCOUNT_BY_ID);
 		preparedStatement.setString(1, accountId);
 		//preparedStatement.setString(2, password);
 		ResultSet resultSet = preparedStatement.executeQuery();
+		
 		if(resultSet.next()){
-			AccountDto accountDto =  makeAccountDto(resultSet);
+			 accountDto =  makeAccountDto(resultSet);
 		}else{
-			return new AccountDto();
+			//return new AccountDto();
 		}
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-		return null;
+		return accountDto;
 	}
 	
 
@@ -208,7 +207,7 @@ public class AccountDaoImpl implements AccountDao{
 	
 	private static String ADD_USER = "insert into accounts(account_id, account_first_name, account_last_name, account_nick_name, rank, date_of_birth, gender, mobile_number, country,"+
 "email, lite_coin_address, sponsor_link, total_earnings,account_password, user_role) values(?, ?, ?, ?, ?, ?, ?, ?,?,?, ?, ?, ?, ?,?)";
-	private static String GET_ACCOUNT_BY_ID = "SELECT * FROM accounts where account_id = ?";
+	private static String GET_ACCOUNT_BY_ID = "SELECT * FROM accounts WHERE account_id = ?";
 	private static String DELETE__USER = "DELETE FROM accounts where account_id = ? AND email = ?";
 	private static String UPDATE_USER = "UPDATE accounts set account_name = ?, account_nick_name = ?, rank = ?, date_of_birth = ?, gender = ?, mobile_number = ?,country = ?, email = ?, lite_coin_address = ?, sponsor_link = ?, total_earnings = ? where account_id = ? AND email = ?";
 	private static String GET_ALL_USERS = "SELECT account_id, account_name, account_nick_name, rank, date_of_birth, gender, mobile_number,country, email, lite_coin_address, sponsor_link, total_earnings FROM accounts ORDER BY account_id";
@@ -286,6 +285,8 @@ public class AccountDaoImpl implements AccountDao{
 			return false;
 		}
 	}
+	
+	
 
 	
 }

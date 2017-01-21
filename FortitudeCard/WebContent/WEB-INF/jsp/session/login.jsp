@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page session="true"%>
 
 <!doctype html>
@@ -42,7 +42,9 @@
 
 <body onload='document.loginForm.username.focus();'>
 	<form name='loginForm'
-			action="<c:url value='/j_spring_security_check' />" method='POST'>
+		<%-- 	action="<c:url value='/j_spring_security_check' />" method='POST'> --%>
+		action="<c:url value='/login?${_csrf.parameterName}=${_csrf.token} }' />" method='POST'>
+			
 <%-- 		<form:label path="id">Enter username</form:label> --%>
 <%-- 		<form:input id="id" name="id" path="id" /> --%>
 <!-- 		<br> -->

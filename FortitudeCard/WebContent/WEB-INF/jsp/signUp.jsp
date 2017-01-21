@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="">
 <head>
 <meta charset="utf-8">
@@ -26,14 +26,7 @@ $('#datepicker').datepicker({
     showOn: 'button', 
     buttonImageOnly: true
 });
-<!-- $(function(){
-	$("#datepicker").datepicker({
-	prevText:"Click to show previous months",
-	nextText:"Click to show next months",
-	showOtherMonths:true,
-	selectOtherMonths:true
-	});
-}); -->
+
 </script>
 
 
@@ -55,8 +48,7 @@ $('#datepicker').datepicker({
 	href="${pageContext.request.contextPath}/resources/css/style.css">
 
 <!--  -->
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/css/sign-up.css">
+
 
 
 </head>
@@ -138,7 +130,7 @@ $('#datepicker').datepicker({
 				<div class="separator ">:</div>
 				<div class="value-container ">
 					<div class="value-text">
-						<form:input path="dateOfBirth" type="text" id="datePicker" />
+						<form:input path="dateOfBirth" type="datetime-local" id="datePicker" />
 					</div>
 					<div class="value-error-text">
 						<form:errors path="dateOfBirth" cssStyle="color: #ff0000;" />

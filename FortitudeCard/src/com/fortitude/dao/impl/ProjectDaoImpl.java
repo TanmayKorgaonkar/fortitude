@@ -5,20 +5,28 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.fortitude.dao.CategoryDao;
 import com.fortitude.dao.ProjectDao;
 import com.fortitude.dto.AccountDto;
+import com.fortitude.dto.ProjectCategoriesDto;
 import com.fortitude.dto.ProjectDto;
+import com.fortitude.enums.ReturnTypes;
 
 public class ProjectDaoImpl implements ProjectDao {
 	
-
+	CategoryDao categoryDao;
+	
 	@Autowired
 	DataSource dataSource;
 
@@ -73,14 +81,36 @@ public class ProjectDaoImpl implements ProjectDao {
 	@Override
 	public void addNewProject(ProjectDto projectDto) {
 		try{
+			Date plannedDate = projectDto.getProjectScheduledEndTime();
+			Date actualEndDate = projectDto.getProjectActualEndTime();
+			Date currentDate = Date.from(Instant.now());
+			SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-DD");
+			String formattedDate = formatter.format(currentDate);
+			//birthDate = formatter.parse(currentDate);
+			LocalDate currentLocal = LocalDate.parse(formattedDate);
+			LocalDate currentPlannedDate = LocalDate.parse(formatter.format(plannedDate));
+			LocalDate currentActualEndDate = LocalDate.parse(formatter.format(actualEndDate));
+			
 			Connection connection = (Connection)dataSource.getConnection();
 			PreparedStatement preparedStatement = connection.prepareStatement(ADD_PROJECT);
-			preparedStatement.setString(1, projectDto.getProjectId());
+			String projectId = projectDto.getProjectId();
+			preparedStatement.setString(1, projectId);
 			preparedStatement.setString(2, projectDto.getProjectName());
 			preparedStatement.setString(3, projectDto.getProjectOwner());
-			preparedStatement.setString(4, projectDto.getProjectCost());
-			preparedStatement.setString(5, projectDto.getProjectCategory());
-			preparedStatement.setString(6, projectDto.getProjectDetails());
+			preparedStatement.setLong(4, projectDto.getProjectCost());
+			//preparedStatement.setString(5, projectDto.getProjectCategory());
+			preparedStatement.setString(5, projectDto.getProjectDetails());
+			preparedStatement.setString(6, projectDto.getProjectExternalLink());
+			preparedStatement.setLong(7, projectDto.getMinimumAmountToInvest());
+			preparedStatement.setDate(8, java.sql.Date.valueOf(currentLocal));
+			preparedStatement.setDate(9, java.sql.Date.valueOf(currentPlannedDate));
+			preparedStatement.setDate(10, java.sql.Date.valueOf(currentActualEndDate));
+			preparedStatement.setBoolean(11, projectDto.isTargetMet());
+			preparedStatement.setDouble(12, projectDto.getReturnPromised());
+			preparedStatement.setString(13, projectDto.getReturnType().toString());
+			
+			categoryDao.addCategory(new ProjectCategoriesDto(projectId, projectDto.getProjectCategory()));
+			
 			preparedStatement.executeUpdate();
 
 			System.out.println("Project Added.");
@@ -96,13 +126,24 @@ public class ProjectDaoImpl implements ProjectDao {
 		project.setProjectId(resultSet.getString(1));
 		project.setProjectName(resultSet.getString(2));
 		project.setProjectOwner(resultSet.getString(3));
-		project.setProjectCost(resultSet.getString(4));
-		project.setProjectCategory(resultSet.getString(5));
-		project.setProjectDetails(resultSet.getString(6));
+		project.setProjectCost(resultSet.getLong(4));
+		project.setProjectDetails(resultSet.getString(5));
+		project.setProjectExternalLink(resultSet.getString(6));
+		project.setMinimumAmountToInvest(resultSet.getLong(7));
+		project.setProjectStartTime(resultSet.getDate(8));
+		project.setProjectScheduledEndTime(resultSet.getDate(9));
+		
+		project.setProjectActualEndTime(resultSet.getDate(10));
+		project.setTargetMet(resultSet.getBoolean(11));
+		project.setReturnPromised(resultSet.getDouble(12));
+		project.setReturnType(ReturnTypes.valueOf(resultSet.getString(13)));
+		
+
 	
 		return project;
 	}
 
 	private static String GET_ALL_PROJECTS = "Select * from projects";
-	public final static String ADD_PROJECT = "INSERT INTO PROJECTS(project_id, project_name, project_owner, project_cost, project_category, project_details) values (?, ?, ?, ?, ?, ?)";
+	public final static String ADD_PROJECT = "insert into projects (project_id, project_name, project_owner, project_amount, project_details, project_external_link, minimum_amount_to_invest,"
++"project_start_time, project_scheduled_end_time, project_actual_end_time, target_met, returned_promised, return_type) values (?,?,?,?,?, ?,?, ?,?,?,false,?, ?)";
 }

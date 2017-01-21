@@ -4,13 +4,15 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Projects</title>
+<!-- Import Library Files -->
 
-
+<script
+	src="<c:url value ="${pageContext.request.contextPath}/resources/js/jquery-1.9.1.min.js"/>"></script>
 <link href="https://fonts.googleapis.com/css?family=Lato:400,300,700"
 	rel='stylesheet' type='text/css'>
 <link rel="stylesheet"
@@ -31,9 +33,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/cssAdmin/main-layout.css" />
 
-<!-- Import Library Files -->
-<script
-	src="${pageContext.request.contextPath}/resources/js/lib/jquery.min.js" /></script>
+
 
 
 

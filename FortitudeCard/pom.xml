@@ -26,14 +26,17 @@
 			</plugin>
 		</plugins>
 	</build>
-	
-	<properties>
-		<spring.version>3.2.8.RELEASE</spring.version>
-		<spring.security.version>3.2.3.RELEASE</spring.security.version>
-		<jstl.version>1.2</jstl.version>
-	</properties>
-	
+
+	<!-- <properties> <spring.version>3.2.8.RELEASE</spring.version> <spring.security.version>3.2.3.RELEASE</spring.security.version> 
+		<jstl.version>1.2</jstl.version> </properties> -->
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.3</version>
+		</dependency>
+
 		<dependency>
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>
@@ -79,12 +82,12 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-		
+
 		<dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>1.1.0.Final</version>
-        </dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.1.0.Final</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -108,42 +111,45 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		
-		
-				<!-- Spring Security -->
+
+
+		<!-- Spring Security -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
-			<version>${spring.security.version}</version>
+			<version>4.2.1.RELEASE</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
-			<version>${spring.security.version}</version>
+			<version>4.2.1.RELEASE</version>
 		</dependency>
+
+		<!-- <dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-acl</artifactId> 
+			<version>${spring.security.version}</version> </dependency> -->
 
 		<!-- Spring Security JSP Taglib -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
-			<version>${spring.security.version}</version>
+			<version>4.2.1.RELEASE</version>
 		</dependency>
 
 		<!-- jstl for jsp page -->
 		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
-			<version>${jstl.version}</version>
+			<version>1.2</version>
 		</dependency>
-		
 
-<!-- https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api -->
-			<dependency>
-			    <groupId>javax.servlet.jsp</groupId>
-			    <artifactId>javax.servlet.jsp-api</artifactId>
-			    <version>2.2.1</version>
-			</dependency>
+
+		<!-- https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api -->
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>2.2.1</version>
+		</dependency>
 
 	</dependencies>
 </project>

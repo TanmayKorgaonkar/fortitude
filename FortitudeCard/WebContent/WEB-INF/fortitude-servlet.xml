@@ -24,6 +24,14 @@
     	<property name="transferDao" ref="transferDao"></property>
     </bean>
     
+     <bean id="investService" class="com.fortitude.serviceImpl.InvestServiceImpl">
+    	<property name="investDao" ref="investDao"></property>
+    </bean>
+    
+    <bean id="investDao" class="com.fortitude.dao.impl.InvestDaoImpl">
+    	<property name="dataSource" ref="dataSource"></property>
+    </bean>
+    
     <bean id="accountDao" class="com.fortitude.dao.impl.AccountDaoImpl">
     	<property name="dataSource" ref="dataSource"></property>
     	<property name="userRoleDao" ref="userRoleDao"></property>

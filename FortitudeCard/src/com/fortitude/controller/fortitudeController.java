@@ -1,14 +1,15 @@
 package com.fortitude.controller;
 
-import com.fortitude.dto.ProjectDto;
-import com.fortitude.service.ProjectService;
-import com.mysql.jdbc.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.sql.SQLException;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,17 +22,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fortitude.dto.AccountDto;
+import com.fortitude.dto.InvestDto;
+import com.fortitude.dto.ProjectDto;
 import com.fortitude.dto.TransferDto;
+import com.fortitude.enums.CategoryEnum;
+import com.fortitude.service.AccountService;
+import com.fortitude.service.InvestService;
+import com.fortitude.service.ProjectService;
 import com.fortitude.service.TransferService;
+import com.fortitude.vo.InvestmentVo;
 @RequestMapping("/fortitude")
 @Controller
 public class fortitudeController {
+	
+	@Autowired
+	AccountService accountService;
 	
 	@Autowired
 	ProjectService projectService;
 	
 	@Autowired 
 	TransferService transferService;
+	
+	@Autowired
+	InvestService investService;
 	
 	
 	@RequestMapping("/welcome")
@@ -46,8 +61,13 @@ public class fortitudeController {
 	 * All page view Methods start
 	 */
 	
-	@RequestMapping(value = "/myAccount", method = RequestMethod.GET)
-	public String getAccount(Model model){
+	@RequestMapping(value = {"/myAccount", "account"}, method = RequestMethod.GET)
+	public String getAccount(HttpServletRequest request, HttpServletResponse response, Model model){
+		String userId = request.getRemoteUser();
+		AccountDto accountDto = accountService.getAccount(userId);
+		System.out.println("Getting here"+ accountDto);
+		model.addAttribute("account", accountDto);
+		 
 //		model.addAttribute("account", accountService.getAccount("temp-account"));
 		/**
 		 * TODO 
@@ -73,12 +93,14 @@ public class fortitudeController {
 		model.put("projectsBean", projectsDto);
 		//model.addObject("projectsBean", projectsDto);
 		List<String> categoryList = new ArrayList<>();
-		categoryList.add("Real Estate");
-		categoryList.add("Technology Startup");
-		categoryList.add("Financial Startup");
-		categoryList.add("Finance");
-		categoryList.add("Renewable Energy");
-		categoryList.add("Others");
+		categoryList.add(CategoryEnum.DIGITAL_CURRENCIES.toString());
+		categoryList.add(CategoryEnum.FINTECH.toString());
+		categoryList.add(CategoryEnum.FOOD_AND_DINING.toString());
+		categoryList.add(CategoryEnum.MUSIC.toString());
+		categoryList.add(CategoryEnum.REAL_ESTATE.toString());
+		categoryList.add(CategoryEnum.RENEWABLE_ENERGY.toString());
+		categoryList.add(CategoryEnum.TECHNICAL.toString());
+		categoryList.add(CategoryEnum.WINES_AND_LIQUOR.toString());
 		model.put("categoryList", categoryList);
 		
 		return "/page/projects/addProjects";
@@ -102,12 +124,21 @@ public class fortitudeController {
 		 * TODO
 		 * return transfer page
 		 */
-		return new ModelAndView("");
+		return new ModelAndView("/page/transfer/transferFunds");
 		//return "/page/account";
 	}
-	
+	Double sumInvested = 0.0;
+
+	double compoundInterest = 0.0;
 	@RequestMapping(value = "/invest", method = RequestMethod.GET)
-	public String getInvest(Model model){
+	public String getInvest(HttpServletRequest request, HttpServletResponse response, Model model) throws SQLException{
+		String userId = request.getRemoteUser();
+		List<InvestDto> investDtoList = investService.getInvestByUser(userId);
+		InvestmentVo investmentVo = makeInvestVo(investDtoList, userId);
+		model.addAttribute("investmentVo", investmentVo);
+		return "page/projects/invest";
+
+		
 //		model.addAttribute("account", accountService.getAccount("temp-account"));
 		/**
 		 * TODO
@@ -116,7 +147,35 @@ public class fortitudeController {
 		 * 
 		 * return invest page
 		 */
-		return "/page/account";
+	//	return "/page/account";
+	}
+	
+	private InvestmentVo makeInvestVo(List<InvestDto> investDtoList, String userId){
+		InvestmentVo investmentVo= new InvestmentVo();
+		long numberOfProjects = investDtoList.stream().map(f -> f.getProjectId()).distinct().count();
+		investDtoList.stream().forEach(f -> {
+			sumInvested +=f.getInvestmentAmount();
+		});
+		List<String> projectIdList = investDtoList.stream().map(f -> f.getProjectId()).collect(Collectors.toList());
+		Date currentDate = Date.from(Instant.now());
+		SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-DD");
+		String formattedDate = formatter.format(currentDate);
+		LocalDate currentLocal = LocalDate.parse(formattedDate.toString());
+		
+		investDtoList.stream().forEach(d ->{
+			Date dateOfInvestment = d.getDateOfInvestment();
+			LocalDate previousDate = LocalDate.parse(dateOfInvestment.toString());
+			long range = ChronoUnit.DAYS.between(previousDate, currentLocal);
+			float interest = d.getInterestPerMonth();
+			compoundInterest += Math.pow((1+(interest/365)), range);
+//			int days = Days.daysBetween(dateOfInvestment, currentDate).getDays();
+		});
+		investmentVo.setNumberOfProjectsInvested(numberOfProjects);
+		investmentVo.setProjectId(projectIdList);
+		investmentVo.setTotalInterest(compoundInterest);
+		investmentVo.setUserId(userId);
+		investmentVo.setTotalInvestmentsMade(sumInvested);
+		return investmentVo;
 	}
 	
 	@RequestMapping(value = "/projects", method = RequestMethod.GET)
@@ -158,6 +217,13 @@ public class fortitudeController {
 		 * return support page
 		 */
 		return true;
+	}
+	
+	@RequestMapping(value="/projects", method = RequestMethod.POST)
+	public String investInProjects(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("beanss") InvestDto investDto) throws SQLException{
+		/*investDto.setUserId(response.getRemoteUser());*/
+		investService.investInProject(investDto);
+		return "/page/projects";
 	}
 	
 	

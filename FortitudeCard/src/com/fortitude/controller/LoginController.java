@@ -55,6 +55,15 @@ public class LoginController {
 		model.addObject("loginBean", loginDto);
 		return model;
 	}
+	
+	@RequestMapping(value="/account", method = RequestMethod.GET)
+	public ModelAndView getAccountById(HttpServletRequest request, HttpServletResponse response){
+		String userId = request.getRemoteUser();
+		System.out.println(userId);
+	ModelAndView model = new ModelAndView("account");
+	return null;
+	//String userId = request.getAttribute("loggedInUser").toString();
+	}
 	@RequestMapping(value="/fortitudeLogin", method=RequestMethod.POST)
 	public ModelAndView executeLogin(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("loginBean")LoginDto loginDto){
 		ModelAndView model = null;

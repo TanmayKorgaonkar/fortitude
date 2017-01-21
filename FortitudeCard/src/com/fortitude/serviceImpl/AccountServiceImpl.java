@@ -23,6 +23,7 @@ public class AccountServiceImpl implements AccountService {
 	//private static AccountDaoImpl accountDao;
 	//@Autowired
 	//private static DatabaseUtil transaction1;
+	@Autowired
 	private AccountDao accountDao;
 	
 	public AccountDao getAccountDao(){
@@ -53,6 +54,12 @@ public class AccountServiceImpl implements AccountService {
 		//}else{
 //			return accountDao.getAllAccounts(transaction, accountDto);
 		//}
+		try {
+			return accountDao.getAccountById(accountId);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 
