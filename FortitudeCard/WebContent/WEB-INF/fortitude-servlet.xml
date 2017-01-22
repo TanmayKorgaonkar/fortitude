@@ -44,6 +44,7 @@
     
     <bean id="projectDao" class="com.fortitude.dao.impl.ProjectDaoImpl">
     	<property name="dataSource" ref="dataSource"></property>
+    	<property name="categoryDao" ref="categoryDao"></property>
     </bean>
     
     <bean id="transferDao" class="com.fortitude.dao.impl.TransferDaoImpl">
@@ -51,6 +52,9 @@
     </bean>    
     
     <bean id="userRoleDao" class="com.fortitude.dao.impl.UserRoleDaoImpl">
+    </bean>
+    
+    <bean id="categoryDao" class="com.fortitude.dao.impl.CategoryDaoImpl">
     </bean>
     
     <bean id="formValidator" class="com.fortitude.validators.SignUpFormValidator"/>

@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -27,8 +29,15 @@ public class ProjectDaoImpl implements ProjectDao {
 	
 	CategoryDao categoryDao;
 	
-	@Autowired
 	DataSource dataSource;
+	
+	public CategoryDao getCategoryDao(){
+		return this.categoryDao;
+	}
+	
+	public void setCategoryDao(CategoryDao categoryDao){
+		this.categoryDao=categoryDao;
+	}
 
 	public void setDataSource(DataSource dataSource) {
 	    this.dataSource = dataSource;
@@ -79,18 +88,21 @@ public class ProjectDaoImpl implements ProjectDao {
 	}
 	
 	@Override
-	public void addNewProject(ProjectDto projectDto) {
+	public void addNewProject(ProjectDto projectDto) throws ParseException, SQLException {
+		System.out.println("coming here");
 		try{
-			Date plannedDate = projectDto.getProjectScheduledEndTime();
-			Date actualEndDate = projectDto.getProjectActualEndTime();
-			Date currentDate = Date.from(Instant.now());
-			SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-DD");
-			String formattedDate = formatter.format(currentDate);
-			//birthDate = formatter.parse(currentDate);
-			LocalDate currentLocal = LocalDate.parse(formattedDate);
-			LocalDate currentPlannedDate = LocalDate.parse(formatter.format(plannedDate));
-			LocalDate currentActualEndDate = LocalDate.parse(formatter.format(actualEndDate));
+			String scheduledEnd = projectDto.getProjectScheduledEndTime();
+			String actualEnd = projectDto.getProjectActualEndTime();
+			Date currentDate = new Date();
 			
+			DateFormat formatter = new SimpleDateFormat("yyyy-MM-DD");
+			String currentString = formatter.format(currentDate);
+			Date currentSqlDate = (Date)formatter.parse(currentString);
+			Date scheduledEndDate = (Date)formatter.parse(scheduledEnd);
+			Date actualEndDate = (Date)formatter.parse(actualEnd);
+					
+			//String plannedDate = projectDto.getProjectScheduledEndTime();
+		
 			Connection connection = (Connection)dataSource.getConnection();
 			PreparedStatement preparedStatement = connection.prepareStatement(ADD_PROJECT);
 			String projectId = projectDto.getProjectId();
@@ -102,17 +114,18 @@ public class ProjectDaoImpl implements ProjectDao {
 			preparedStatement.setString(5, projectDto.getProjectDetails());
 			preparedStatement.setString(6, projectDto.getProjectExternalLink());
 			preparedStatement.setLong(7, projectDto.getMinimumAmountToInvest());
-			preparedStatement.setDate(8, java.sql.Date.valueOf(currentLocal));
-			preparedStatement.setDate(9, java.sql.Date.valueOf(currentPlannedDate));
-			preparedStatement.setDate(10, java.sql.Date.valueOf(currentActualEndDate));
-			preparedStatement.setBoolean(11, projectDto.isTargetMet());
+			preparedStatement.setDate(8,new java.sql.Date(currentSqlDate.getTime()));
+			preparedStatement.setDate(9, new java.sql.Date(scheduledEndDate.getTime()));
+			preparedStatement.setDate(10, new java.sql.Date(actualEndDate.getTime()));
+			preparedStatement.setBoolean(11, false);
 			preparedStatement.setDouble(12, projectDto.getReturnPromised());
 			preparedStatement.setString(13, projectDto.getReturnType().toString());
-			
-			categoryDao.addCategory(new ProjectCategoriesDto(projectId, projectDto.getProjectCategory()));
-			
 			preparedStatement.executeUpdate();
+			
 
+			System.out.println("Category Called");
+			categoryDao.addCategory(connection, new ProjectCategoriesDto(projectId, projectDto.getProjectCategory()));
+			System.out.println("Dao called");
 			System.out.println("Project Added.");
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -124,19 +137,20 @@ public class ProjectDaoImpl implements ProjectDao {
 		// TODO Auto-generated method stub
 		ProjectDto project = new ProjectDto();
 		project.setProjectId(resultSet.getString(1));
+		
 		project.setProjectName(resultSet.getString(2));
 		project.setProjectOwner(resultSet.getString(3));
 		project.setProjectCost(resultSet.getLong(4));
 		project.setProjectDetails(resultSet.getString(5));
 		project.setProjectExternalLink(resultSet.getString(6));
 		project.setMinimumAmountToInvest(resultSet.getLong(7));
-		project.setProjectStartTime(resultSet.getDate(8));
-		project.setProjectScheduledEndTime(resultSet.getDate(9));
+		project.setProjectStartTime(resultSet.getString(8));
+		project.setProjectScheduledEndTime(resultSet.getString(9));
 		
-		project.setProjectActualEndTime(resultSet.getDate(10));
+		project.setProjectActualEndTime(resultSet.getString(10));
 		project.setTargetMet(resultSet.getBoolean(11));
 		project.setReturnPromised(resultSet.getDouble(12));
-		project.setReturnType(ReturnTypes.valueOf(resultSet.getString(13)));
+		project.setReturnType(resultSet.getString(13));
 		
 
 	
@@ -145,5 +159,5 @@ public class ProjectDaoImpl implements ProjectDao {
 
 	private static String GET_ALL_PROJECTS = "Select * from projects";
 	public final static String ADD_PROJECT = "insert into projects (project_id, project_name, project_owner, project_amount, project_details, project_external_link, minimum_amount_to_invest,"
-+"project_start_time, project_scheduled_end_time, project_actual_end_time, target_met, returned_promised, return_type) values (?,?,?,?,?, ?,?, ?,?,?,false,?, ?)";
++"project_start_time, project_scheduled_end_time, project_actual_end_time, target_met, returned_promised, return_type) values (?,?,?,?,?, ?,?, ?,?,?,?,?, ?)";
 }

@@ -6,20 +6,20 @@ import com.fortitude.enums.CategoryEnum;
 
 public class ProjectCategoriesDto {
 	String projectId;
-	List<CategoryEnum> categoryEnum;
+	List<String> categoryEnum;
 	public String getProjectId() {
 		return projectId;
 	}
 	public void setProjectId(String projectId) {
 		this.projectId = projectId;
 	}
-	public List<CategoryEnum> getCategoryEnum() {
+	public List<String> getCategoryEnum() {
 		return categoryEnum;
 	}
-	public void setCategoryEnum(List<CategoryEnum> categoryEnum) {
+	public void setCategoryEnum(List<String> categoryEnum) {
 		this.categoryEnum = categoryEnum;
 	}
-	public ProjectCategoriesDto(String projectId, List<CategoryEnum> categoryEnum) {
+	public ProjectCategoriesDto(String projectId, List<String> categoryEnum) {
 		super();
 		this.projectId = projectId;
 		this.categoryEnum = categoryEnum;

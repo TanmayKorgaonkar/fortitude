@@ -1,6 +1,7 @@
 package com.fortitude.serviceImpl;
 
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -37,7 +38,7 @@ public class ProjectServiceImpl implements ProjectService{
 	}
 
 	@Override
-	public void addProjects(ProjectDto projectDto) throws SQLException {
+	public void addProjects(ProjectDto projectDto) throws SQLException, ParseException {
 		// TODO Auto-generated method stub
 		projectDao.addNewProject(projectDto);
 	}

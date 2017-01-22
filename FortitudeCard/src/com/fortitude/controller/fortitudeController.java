@@ -1,6 +1,7 @@
 package com.fortitude.controller;
 
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -27,6 +28,7 @@ import com.fortitude.dto.InvestDto;
 import com.fortitude.dto.ProjectDto;
 import com.fortitude.dto.TransferDto;
 import com.fortitude.enums.CategoryEnum;
+import com.fortitude.enums.ReturnTypes;
 import com.fortitude.service.AccountService;
 import com.fortitude.service.InvestService;
 import com.fortitude.service.ProjectService;
@@ -101,17 +103,29 @@ public class fortitudeController {
 		categoryList.add(CategoryEnum.RENEWABLE_ENERGY.toString());
 		categoryList.add(CategoryEnum.TECHNICAL.toString());
 		categoryList.add(CategoryEnum.WINES_AND_LIQUOR.toString());
+		
+		List<String> returnTypeList = new ArrayList<>();
+		returnTypeList.add(ReturnTypes.HALF_YEAR.toString());
+		returnTypeList.add(ReturnTypes.MONTHLY.toString());
+		returnTypeList.add(ReturnTypes.SEMI_ANNUAL.toString());
+		returnTypeList.add(ReturnTypes.TWO_MONTHS.toString());
+		returnTypeList.add(ReturnTypes.YEARLY.toString());
 		model.put("categoryList", categoryList);
+		model.put("returnTypeList", returnTypeList);
 		
 		return "/page/projects/addProjects";
 	}
 	
 	@RequestMapping(value = "/addProjects", method = RequestMethod.POST)
-	public ModelAndView setProjects(HttpServletRequest request, HttpServletResponse response, @ModelAttribute ("projectsBean") ProjectDto projectsDto) throws SQLException{
-		ModelAndView model = null;
+	public String setProjects(HttpServletRequest request, HttpServletResponse response, @ModelAttribute ("projectsBean") ProjectDto projectsDto) throws SQLException, ParseException{
+		System.out.println("request coming");
+		String userId = request.getRemoteUser();
+		projectsDto.setProjectOwner(userId);
+		Model model = null;
 		projectService.addProjects(projectsDto);
-		model = new ModelAndView("/page/projects/addProjects");
-		return model;
+		System.out.println("controller called");
+		//model.addAttribute("/page/projects");
+		return "/page/projects";
 	}
 	
 	

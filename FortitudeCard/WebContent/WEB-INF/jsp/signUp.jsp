@@ -23,6 +23,7 @@
 
 <script>
 $('#datepicker').datepicker({ 
+	dateFormat: "YYYY-MM-DD",
     showOn: 'button', 
     buttonImageOnly: true
 });
@@ -130,7 +131,7 @@ $('#datepicker').datepicker({
 				<div class="separator ">:</div>
 				<div class="value-container ">
 					<div class="value-text">
-						<form:input path="dateOfBirth" type="datetime-local" id="datePicker" />
+						<form:input path="dateOfBirth" type="date" id="datePicker" />
 					</div>
 					<div class="value-error-text">
 						<form:errors path="dateOfBirth" cssStyle="color: #ff0000;" />
