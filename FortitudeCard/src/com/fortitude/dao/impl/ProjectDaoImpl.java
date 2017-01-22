@@ -1,6 +1,6 @@
 package com.fortitude.dao.impl;
 
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -68,7 +68,7 @@ public class ProjectDaoImpl implements ProjectDao {
 	public List<ProjectDto> getAllProjects() {
 		// TODO Auto-generated method stub
 		try{
-			Connection connection = (Connection)dataSource.getConnection();
+			Connection connection = dataSource.getConnection();
 
 			PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_PROJECTS);
 			
@@ -151,13 +151,32 @@ public class ProjectDaoImpl implements ProjectDao {
 		project.setTargetMet(resultSet.getBoolean(11));
 		project.setReturnPromised(resultSet.getDouble(12));
 		project.setReturnType(resultSet.getString(13));
-		
-
-	
 		return project;
 	}
+	
+	@Override
+	public ProjectDto getProjectById(String projectId) throws SQLException {
+		try{
+			Connection connection = dataSource.getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(GET_PROJECT_BY_ID);
+			preparedStatement.setString(1, projectId);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			ProjectDto projectDto = new ProjectDto();
+			while(resultSet.next()){
+				projectDto = makeProjectDto(resultSet);
+			}
+			System.out.println(projectDto);
+			return projectDto;
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
 
-	private static String GET_ALL_PROJECTS = "Select * from projects";
-	public final static String ADD_PROJECT = "insert into projects (project_id, project_name, project_owner, project_amount, project_details, project_external_link, minimum_amount_to_invest,"
+	private final static String GET_ALL_PROJECTS = "Select * from projects";
+	private final static String ADD_PROJECT = "insert into projects (project_id, project_name, project_owner, project_amount, project_details, project_external_link, minimum_amount_to_invest,"
 +"project_start_time, project_scheduled_end_time, project_actual_end_time, target_met, returned_promised, return_type) values (?,?,?,?,?, ?,?, ?,?,?,?,?, ?)";
+	private final static String GET_PROJECT_BY_ID = "select * from projects where project_id =?";
+
+	
 }

@@ -57,7 +57,9 @@
 						<div class="link">
 							<a id="project4-popover-link" tabindex="0"
 								class="invest-title-project-header" role="button"
+								href="projectdetail?projectId=${project.projectId}"
 								data-placement="bottom" data-trigger="focus">${project.projectName}</a>
+								
 						</div>
 						<div class="invest-project-more-option link">
 							<a id="pop-over-operner"
@@ -85,6 +87,7 @@
 							src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif"
 							width="1" height="1">
 					</form>
+					
 					<%-- <form name="submitForm" method="POST" action="invest.html">
 						<input type="hidden" name="projectId" value="${project.projectId}"> 
 						<A HREF="javascript:document.submitForm.submit()">Click Me</A>

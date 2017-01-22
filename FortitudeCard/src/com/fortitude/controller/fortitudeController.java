@@ -19,8 +19,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fortitude.dto.AccountDto;
@@ -193,7 +195,7 @@ public class fortitudeController {
 	}
 	
 	@RequestMapping(value = "/projects", method = RequestMethod.GET)
-	public String getProjects(Model model,String investDto){
+	public String getProjects(Model model,String investDto) throws SQLException{
 //		model.addAttribute("account", accountService.getAccount("temp-account"));
 		/**
 		 * TODO
@@ -238,6 +240,15 @@ public class fortitudeController {
 		/*investDto.setUserId(response.getRemoteUser());*/
 		investService.investInProject(investDto);
 		return "/page/projects";
+	}
+	
+	@RequestMapping(value="/projectdetail", method = RequestMethod.GET)
+	public String getProjectById(HttpServletRequest request, HttpServletResponse response,@RequestParam(value = "projectId", required=true) String projectId, Model model) throws SQLException{
+		System.out.println(projectId);
+		ProjectDto projectDto = projectService.getProjectById(projectId);
+		System.out.println(projectDto.getProjectId());
+		model.addAttribute("projectDto", projectDto);
+		return "/page/projectList/projectdetail";
 	}
 	
 	

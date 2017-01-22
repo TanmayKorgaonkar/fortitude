@@ -11,4 +11,6 @@ public interface ProjectDao {
 	public List<ProjectDto> getAllProjects();
 
 	void addNewProject(ProjectDto projectDto) throws ParseException, SQLException;
+	
+	public ProjectDto getProjectById(String projectId) throws SQLException;
 }

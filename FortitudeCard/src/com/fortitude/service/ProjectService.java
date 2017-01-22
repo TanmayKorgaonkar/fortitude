@@ -10,6 +10,7 @@ import com.fortitude.dto.ProjectDto;
 
 
 public interface ProjectService {
-	public List<ProjectDto> getAllProject();
+	public List<ProjectDto> getAllProject() throws SQLException;
 	void addProjects(ProjectDto projectDto) throws SQLException, ParseException;
+	public ProjectDto getProjectById(String projectId) throws SQLException;
 }
