@@ -45,9 +45,48 @@
 	</div>
 
 	<div id="content" class=" container">
-		<div class="fortitude-container">
-			ProjectId : ${projectDto.projectId}
-		</div>
+		<div class="fortitude-container">Project Id :
+			${projectDto.projectId}</div>
+	</div>
+	<div id="content" class=" container">
+		<div class="fortitude-container">Project Name :
+			${projectDto.projectName}</div>
+	</div>
+	<div id="content" class=" container">
+		<div class="fortitude-container">Project Owner :
+			${projectDto.projectOwner}</div>
+	</div>
+	<div id="content" class=" container">
+		<div class="fortitude-container">Project Cost :
+			${projectDto.projectCost}</div>
+	</div>
+	<div id="content" class=" container">
+		<div class="fortitude-container">Project Details :
+			${projectDto.projectDetails}</div>
+	</div>
+	<div id="content" class=" container">
+		<div class="fortitude-container">Project External Link :
+			${projectDto.projectExternalLink}</div>
+	</div>
+	<div id="content" class=" container">
+		<div class="fortitude-container">Minimum Amount To Invest :
+			${projectDto.minimumAmountToInvest}</div>
+	</div>
+	<div id="content" class=" container">
+		<div class="fortitude-container">Project Start Time :
+			${projectDto.projectStartTime}</div>
+	</div>
+	<div id="content" class=" container">
+		<div class="fortitude-container">Project Scheduled End Time :
+			${projectDto.projectScheduledEndTime}</div>
+	</div>
+	<div id="content" class=" container">
+		<div class="fortitude-container">Return Promised :
+			${projectDto.returnPromised}</div>
+	</div>
+	<div id="content" class=" container">
+		<div class="fortitude-container">Project Type :
+			${projectDto.returnType}</div>
 	</div>
 	<div id="footer">
 		<%@ include file="../../common/footer.jsp"%>
