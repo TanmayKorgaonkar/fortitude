@@ -46,6 +46,9 @@ $('#datepicker').datepicker({
 	href="${pageContext.request.contextPath}/resources/css/responsive.css">
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/css/style.css">
+	
+	<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/sign-up.css">
 
 <!--  -->
 
