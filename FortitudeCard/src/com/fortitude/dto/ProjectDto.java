@@ -32,6 +32,15 @@ public class ProjectDto {
 	private Double returnPromised;
 	// The return type of the project, viz. Monthly etc.
 	private ReturnTypes returnType;
+	
+	private long currentInvestment;
+
+	public long getCurrentInvestment() {
+		return currentInvestment;
+	}
+	public void setCurrentInvestment(long currentInvestment) {
+		this.currentInvestment = currentInvestment;
+	}
 	public String getProjectId() {
 		return projectId;
 	}

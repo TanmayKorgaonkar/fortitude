@@ -1,7 +1,5 @@
 package com.fortitude.dao.impl;
 
-import com.mysql.jdbc.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,10 +16,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fortitude.dao.CategoryDao;
 import com.fortitude.dao.ProjectDao;
-import com.fortitude.dto.AccountDto;
 import com.fortitude.dto.ProjectCategoriesDto;
 import com.fortitude.dto.ProjectDto;
 import com.fortitude.enums.ReturnTypes;
+import com.mysql.jdbc.Connection;
 
 public class ProjectDaoImpl implements ProjectDao {
 	
@@ -136,7 +134,8 @@ public class ProjectDaoImpl implements ProjectDao {
 		project.setProjectActualEndTime(resultSet.getDate(10));
 		project.setTargetMet(resultSet.getBoolean(11));
 		project.setReturnPromised(resultSet.getDouble(12));
-		project.setReturnType(ReturnTypes.valueOf(resultSet.getString(13)));
+		project.setReturnType(ReturnTypes.valueOf(resultSet.getString(13).toUpperCase()));
+		project.setCurrentInvestment(resultSet.getLong(14));
 		
 
 	
