@@ -1,4 +1,4 @@
-package com.fortitude.controller;
+/*package com.fortitude.controller;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -35,9 +35,9 @@ public class AccountController extends HttpServlet{
 	
 	@Autowired
 	private static AccountDaoImpl accountDao;
-	/*@Autowired
+	@Autowired
 	private static DatabaseConnection transaction;
-	*/
+	
 	public AccountController(){
 		super();
 		accountDao = new AccountDaoImpl();
@@ -155,3 +155,4 @@ public class AccountController extends HttpServlet{
 	
 	
 }
+*/

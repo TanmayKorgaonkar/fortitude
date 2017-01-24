@@ -1,6 +1,7 @@
 package com.fortitude.controller;
 
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -18,8 +19,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fortitude.dto.AccountDto;
@@ -27,6 +30,7 @@ import com.fortitude.dto.InvestDto;
 import com.fortitude.dto.ProjectDto;
 import com.fortitude.dto.TransferDto;
 import com.fortitude.enums.CategoryEnum;
+import com.fortitude.enums.ReturnTypes;
 import com.fortitude.service.AccountService;
 import com.fortitude.service.InvestService;
 import com.fortitude.service.ProjectService;
@@ -101,17 +105,29 @@ public class fortitudeController {
 		categoryList.add(CategoryEnum.RENEWABLE_ENERGY.toString());
 		categoryList.add(CategoryEnum.TECHNICAL.toString());
 		categoryList.add(CategoryEnum.WINES_AND_LIQUOR.toString());
+		
+		List<String> returnTypeList = new ArrayList<>();
+		returnTypeList.add(ReturnTypes.HALF_YEAR.toString());
+		returnTypeList.add(ReturnTypes.MONTHLY.toString());
+		returnTypeList.add(ReturnTypes.SEMI_ANNUAL.toString());
+		returnTypeList.add(ReturnTypes.TWO_MONTHS.toString());
+		returnTypeList.add(ReturnTypes.YEARLY.toString());
 		model.put("categoryList", categoryList);
+		model.put("returnTypeList", returnTypeList);
 		
 		return "/page/projects/addProjects";
 	}
 	
 	@RequestMapping(value = "/addProjects", method = RequestMethod.POST)
-	public ModelAndView setProjects(HttpServletRequest request, HttpServletResponse response, @ModelAttribute ("projectsBean") ProjectDto projectsDto) throws SQLException{
-		ModelAndView model = null;
+	public String setProjects(HttpServletRequest request, HttpServletResponse response, @ModelAttribute ("projectsBean") ProjectDto projectsDto) throws SQLException, ParseException{
+		System.out.println("request coming");
+		String userId = request.getRemoteUser();
+		projectsDto.setProjectOwner(userId);
+		Model model = null;
 		projectService.addProjects(projectsDto);
-		model = new ModelAndView("/page/projects/addProjects");
-		return model;
+		System.out.println("controller called");
+		//model.addAttribute("/page/projects");
+		return "/page/projects";
 	}
 	
 	
@@ -179,7 +195,7 @@ public class fortitudeController {
 	}
 	
 	@RequestMapping(value = "/projects", method = RequestMethod.GET)
-	public String getProjects(Model model,String investDto){
+	public String getProjects(Model model,String investDto) throws SQLException{
 //		model.addAttribute("account", accountService.getAccount("temp-account"));
 		/**
 		 * TODO
@@ -224,6 +240,15 @@ public class fortitudeController {
 		/*investDto.setUserId(response.getRemoteUser());*/
 		investService.investInProject(investDto);
 		return "/page/projects";
+	}
+	
+	@RequestMapping(value="/projectdetail", method = RequestMethod.GET)
+	public String getProjectById(HttpServletRequest request, HttpServletResponse response,@RequestParam(value = "projectId", required=true) String projectId, Model model) throws SQLException{
+		System.out.println(projectId);
+		ProjectDto projectDto = projectService.getProjectById(projectId);
+		System.out.println(projectDto.getProjectId());
+		model.addAttribute("projectDto", projectDto);
+		return "/page/projectList/projectdetail";
 	}
 	
 	

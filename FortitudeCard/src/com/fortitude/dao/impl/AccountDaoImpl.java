@@ -86,7 +86,7 @@ public class AccountDaoImpl implements AccountDao{
 
 	
 	public void updateAccount( AccountDto accountDto) {
-		SimpleDateFormat format = new SimpleDateFormat( "YYYY-MM-DD" );
+		SimpleDateFormat format = new SimpleDateFormat( "yyyy-MM-DD" );
 		java.util.Date birthDate = null;
 		
 		try {

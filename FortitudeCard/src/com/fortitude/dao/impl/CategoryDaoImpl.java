@@ -11,10 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.fortitude.dao.CategoryDao;
 import com.fortitude.dto.ProjectCategoriesDto;
 import com.fortitude.enums.CategoryEnum;
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 
 public class CategoryDaoImpl implements CategoryDao{
-	@Autowired
+	/*@Autowired
 	DataSource dataSource;
 
 	public void setDataSource(DataSource dataSource) {
@@ -23,20 +23,25 @@ public class CategoryDaoImpl implements CategoryDao{
 	
 	public DataSource getDataSource(){
 		return this.dataSource;
-	}
+	}*/
 	@Override
-	public void addCategory(ProjectCategoriesDto categoryDto) throws SQLException {
-		Connection connection = (Connection)dataSource.getConnection();
-		PreparedStatement preparedStatement = connection.prepareStatement(ADD_CATEGORIES);
+	public void addCategory(Connection connection, ProjectCategoriesDto categoryDto) throws SQLException {
+		try{PreparedStatement preparedStatement = connection.prepareStatement(ADD_CATEGORIES);
 		String projectId = categoryDto.getProjectId();
-		List<CategoryEnum> enumList = categoryDto.getCategoryEnum();
+		List<String> enumList = categoryDto.getCategoryEnum();
 		for (int i =0 ;i <enumList.size();i++){
 		preparedStatement.setString(1, projectId);
 		preparedStatement.setString(2, enumList.get(i).toString());
+		}
 		preparedStatement.executeBatch();
+		System.out.println("Batch executed");
+		}catch(SQLException e){
+			e.printStackTrace();
 		}
 	}
 	
 	private static final String ADD_CATEGORIES = "INSERT INTO projects_category (project_id, category) values (?,?)";
+
+	
 
 }
