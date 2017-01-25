@@ -20,7 +20,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fortitude.dao.CategoryDao;
 import com.fortitude.dao.ProjectDao;
-import com.fortitude.dto.AccountDto;
 import com.fortitude.dto.ProjectCategoriesDto;
 import com.fortitude.dto.ProjectDto;
 import com.fortitude.enums.ReturnTypes;
@@ -150,6 +149,7 @@ public class ProjectDaoImpl implements ProjectDao {
 		project.setProjectActualEndTime(resultSet.getString(10));
 		project.setTargetMet(resultSet.getBoolean(11));
 		project.setReturnPromised(resultSet.getDouble(12));
+		project.setCurrentInvestment(resultSet.getLong(14));
 		project.setReturnType(resultSet.getString(13));
 		return project;
 	}

@@ -68,10 +68,13 @@
 								data-trigger="click" data-content="Invest" role="button"></a>
 						</div>
 					</div>
-					<div
-						class="invest-title-project-name invest-project-cart-inner-container">${project.projectCategory}</div>
-					<div
-						class="invest-title-project-details invest-project-cart-inner-container">${project.projectDetails}</div>
+					<div class="invest-title-project-name invest-project-cart-inner-container">${project.projectCategory}</div>
+					<div class="invest-title-project-details invest-project-cart-inner-container">${project.projectDetails}</div>
+					<div class="invest-project-cart-inner-container">
+						<div class="invest-project-cart-progress-container" >
+							<div class="invest-project-cart-progress" style="width:${project.currentInvestment/project.projectCost*100}%"></div>
+						</div>
+					</div>
 					<div
 						class="invest-title-project-name invest-project-cart-inner-container">
 					</div>

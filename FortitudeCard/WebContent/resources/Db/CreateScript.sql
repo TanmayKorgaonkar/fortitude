@@ -12,24 +12,26 @@ FOREIGN KEY (project_id) REFERENCES FortitudeDB.projects(project_id),
 PRIMARY KEY(user_id, project_id, date_of_investment)
 );
 
-
-CREATE TABLE FortitudeDB.projects (
-project_id VARCHAR(45) NOT NULL,
-project_name VARCHAR(99) NOT NULL,
-project_owner VARCHAR(45) NOT NULL,
-project_amount BIGINT,
-project_details VARCHAR(999),
-project_external_link VARCHAR(555),
-minimum_amount_to_invest float,
-project_start_time DATE NOT NULL,
-project_scheduled_end_time DATE default '2099-12-12',
-project_actual_end_time DATE default '2099-12-12',
-target_met BOOLEAN default false,
-returned_promised FLOAT NOT NULL,
-return_type VARCHAR(30),
-FOREIGN KEY (project_owner) REFERENCES FortitudeDB.accounts(account_id),
-PRIMARY KEY(project_id)
+CREATE TABLE `projects` (
+  `project_id` varchar(45) NOT NULL,
+  `project_name` varchar(99) NOT NULL,
+  `project_owner` varchar(45) NOT NULL,
+  `project_amount` bigint(20) DEFAULT NULL,
+  `project_details` varchar(999) DEFAULT NULL,
+  `project_external_link` varchar(555) DEFAULT NULL,
+  `minimum_amount_to_invest` float DEFAULT NULL,
+  `project_start_time` date NOT NULL,
+  `project_scheduled_end_time` date DEFAULT '2099-12-12',
+  `project_actual_end_time` date DEFAULT '2099-12-12',
+  `target_met` tinyint(1) DEFAULT '0',
+  `returned_promised` float NOT NULL,
+  `return_type` varchar(30) DEFAULT NULL,
+  `current_investment` int(11) DEFAULT NULL,
+  PRIMARY KEY (`project_id`),
+  KEY `project_owner` (`project_owner`),
+  CONSTRAINT `projects_ibfk_1` FOREIGN KEY (`project_owner`) REFERENCES `accounts` (`account_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 CREATE TABLE FortitudeDB.projects_category (
 project_id VARCHAR(45) NOT NULL,

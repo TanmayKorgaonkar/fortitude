@@ -8,7 +8,17 @@
 	width: 16px;
     height: 16px;
 }
-
+.invest-project-cart-progress{
+    background: red;
+    height: 5px;
+    border-radius: 2px;
+}
+.invest-project-cart-progress-container{
+    width: 100%;
+    border-radius: 2px;
+    background: #ccccef;
+    margin: 8px;
+}
 .invest-project-container .popover-content{
 	    padding: 13px 28px;
 }
