@@ -149,7 +149,7 @@ public class ProjectDaoImpl implements ProjectDao {
 		project.setProjectActualEndTime(resultSet.getString(10));
 		project.setTargetMet(resultSet.getBoolean(11));
 		project.setReturnPromised(resultSet.getDouble(12));
-		project.setCurrentInvestment(resultSet.getLong(14));
+	//	project.setCurrentInvestment(resultSet.getLong(14));
 		project.setReturnType(resultSet.getString(13));
 		return project;
 	}
