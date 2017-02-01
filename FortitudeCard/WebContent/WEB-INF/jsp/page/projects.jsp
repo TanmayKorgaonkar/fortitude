@@ -78,6 +78,21 @@
 					<div
 						class="invest-title-project-name invest-project-cart-inner-container">
 					</div>
+					<div class="invest-project-cart-inner-container">
+						<div class="invest-project-cart-inner-cart-detail-container">
+						<div class = "invest-project-cart-inner-cart-detail value">
+							<div class="invest-project-cart-inner-cart-detail-item">${project.returnPromised}</div>
+							<div class="invest-project-cart-inner-cart-detail-item">${project.tenure}</div>
+							<div class="invest-project-cart-inner-cart-detail-item">${project.returnType}</div>
+						</div>
+						<div class="invest-project-cart-inner-cart-detail attribute">
+							<div class="invest-project-cart-inner-cart-detail-item">total yeild</div>
+							<div class="invest-project-cart-inner-cart-detail-item">tenure(mths)</div>
+							<div class="invest-project-cart-inner-cart-detail-item">payout freq</div>
+						</div>
+						</div>
+					</div>
+					
 					<form action="https://www.paypal.com/cgi-bin/webscr" method="post"
 						target="_top">
 						<input type="hidden" name="cmd" value="_s-xclick"> <input

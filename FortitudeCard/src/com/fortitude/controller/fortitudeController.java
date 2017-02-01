@@ -1,6 +1,7 @@
 package com.fortitude.controller;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
@@ -19,7 +20,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,6 +36,7 @@ import com.fortitude.service.InvestService;
 import com.fortitude.service.ProjectService;
 import com.fortitude.service.TransferService;
 import com.fortitude.vo.InvestmentVo;
+import com.fortitude.vo.ProjectVo;
 @RequestMapping("/fortitude")
 @Controller
 public class fortitudeController {
@@ -203,13 +204,32 @@ public class fortitudeController {
 		 * 
 		 * return invest page
 		 */
-		
-		List<ProjectDto> projects = projectService.getAllProject();
+		List<ProjectVo> projects=getProjectVos(projectService.getAllProject());
 		model.addAttribute("projects", projects);
-		
 		return "/page/projects";
 	}
 	
+	private List<ProjectVo> getProjectVos(List<ProjectDto> allProject) {
+		// TODO Auto-generated method stub
+		List<ProjectVo> projectVos = new ArrayList<ProjectVo>();
+		for(ProjectDto project:allProject){
+			ProjectVo projectVo = new ProjectVo();
+			projectVo.setProjectCost(project.getProjectCost());
+			projectVo.setProjectId(project.getProjectId());
+			projectVo.setProjectName(project.getProjectName());
+			projectVo.setProjectOwner(project.getProjectOwner());
+			projectVo.setReturnPromised(project.getReturnPromised());
+			projectVo.setReturnType(project.getReturnType());
+			projectVo.setTenure("7");
+			projectVo.setCurrentInvestment(project.getCurrentInvestment());
+			projectVo.setMinimumAmountToInvest(project.getMinimumAmountToInvest());
+			projectVo.setProjectCategory(project.getProjectCategory());
+			projectVo.setProjectDetails(project.getProjectDetails());
+			projectVos.add(projectVo);
+		}
+		return projectVos;
+	}
+
 	@RequestMapping(value = "/support", method = RequestMethod.GET)
 	public String support(Model model){
 //		model.addAttribute("account", accountService.getAccount("temp-account"));
@@ -245,7 +265,7 @@ public class fortitudeController {
 	@RequestMapping(value="/projectdetail", method = RequestMethod.GET)
 	public String getProjectById(HttpServletRequest request, HttpServletResponse response,@RequestParam(value = "projectId", required=true) String projectId, Model model) throws SQLException{
 		System.out.println(projectId);
-		ProjectDto projectDto = projectService.getProjectById(projectId);
+		ProjectDto projectDto = projectService.getProjectById("P0001");
 		System.out.println(projectDto.getProjectId());
 		model.addAttribute("projectDto", projectDto);
 		return "/page/projectList/projectdetail";

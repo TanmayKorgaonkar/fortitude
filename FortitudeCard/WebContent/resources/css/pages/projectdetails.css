@@ -1,0 +1,66 @@
+
+
+.preoject-details-header-title{
+	color:red;
+}
+.project-details-main-container{
+	display:flex;
+}
+.project-details-image-container{
+	color:red;
+	width: 50%;
+    height: 366px;
+}
+
+.project-details-data-container{
+	color:red;
+	display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.project-details-data-row{
+	color:red;
+	display: flex;
+	padding: 8px;
+	flex-direction: column;
+}
+
+.project-details-data-item-container{
+	color:red;
+	display: flex;
+	width: 50%;
+}
+
+.project-details-data-item-icon{
+	color:red;
+	padding: 16px;
+	width: 30%;
+	text-align:center;
+}
+
+.project-details-data-item-info{
+	width: 70%;
+	padding: 16px;
+}
+
+.project-details-data-item-info .data-value{
+	color:black;
+}
+
+.project-details-data-item-info .data-label{
+	color:red;
+}
+
+.project-details-progress-container{
+    background: red;
+    height: 8px;
+    border-radius: 2px;
+    width: 100%;
+}
+.project-details-progress{
+    width: 100%;
+    border-radius: 2px;
+    background: #ccccef;
+    height: 8px;
+}
