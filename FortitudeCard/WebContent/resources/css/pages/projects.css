@@ -1,0 +1,175 @@
+.invest-title{
+	font-size: 32px;
+    color: #00AFF0;
+    font-weight: 300;
+}
+.invest-project-container:hover .invest-project-more-option{
+	display:block;
+	width: 16px;
+    height: 16px;
+}
+.invest-project-cart-progress{
+    background: red;
+    height: 5px;
+    border-radius: 2px;
+}
+.invest-project-cart-progress-container{
+    width: 100%;
+    border-radius: 2px;
+    background: #ccccef;
+    margin: 8px;
+}
+.invest-project-container .popover-content{
+	    padding: 13px 28px;
+}
+
+.invest-project-container .popover{
+	width: 1000px;
+    height: 480px;
+    border-radius: 2px;
+}
+
+.invest-project-container .popover.bottom>.arrow{
+	display: none;
+}
+
+.invest-project-cart-inner-container{
+	display: flex;
+	
+}
+.invest-project-cart-inner-container .link{
+    width: 100%;
+    padding: 0;
+}
+
+.invest-project-more-option{
+	display:none;
+	height:16px;
+	width:16px;
+}
+.invest-title-header{
+	font-size: 38px;
+    color: grey;
+    font-weight: 300;
+    display: flex;
+}
+
+.invest-title-details{
+	font-size: 12px;
+    color: grey;
+    font-weight: 300;
+}
+
+.invest-main-title{
+	font-size: 28px;
+    color: black;
+    text-align: center;
+}
+
+.invest-title-header-item{
+	width:	100%;
+}
+
+.invest-title-project-header{
+	font-size: 16px;
+    width: 94%;
+    margin: 3%;
+    color: gray;
+}
+.invest-title-project-image{
+	border: 1px solid white;
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.24);
+    width: 94%;
+    height: 170px;
+    border-radius: 12px;
+    margin: 3%;
+}
+
+.invest-title-project-name{
+	font-size: 14px;
+    font-weight: 800;
+    width: 94%;
+    margin: 3%;
+}
+
+.invest-title-project-cost{
+	font-size: 14px;
+	font-weight: 800;
+    width: 94%;
+    margin: 3%;
+}
+.invest-title-project-main-header{
+	font-size: 20px;
+    padding: 20px;
+}
+.invest-title-project-details{
+	font-size: 12px;
+    width: 94%;
+    margin: 3%;
+}
+
+.invest-title-project-popover-container{
+	width: 300px;
+    position: absolute;
+}
+.invest-title-project-popover-panels{
+	  width: 50%;
+    position: relative;
+    float: left;
+}
+
+.invest-title-project-popover-title{
+    font-size: 12px;
+    color: gray;
+    padding: 8px;
+}
+
+.invest-title-project-popover-cost{
+    font-weight: 700;
+    color: #31708f;
+    font-size: 18px;
+    padding: 0 16px;
+}
+
+.invest-title-project-popover-button{
+    position: relative;
+    top: 14px;
+    float: right;
+}
+
+.invest-project-cart-inner-cart-detail-container{
+	display:flex;
+	flex-direction:column;
+	width: 100%;
+}
+
+.invest-project-cart-inner-cart-detail{
+	display:flex;
+	width: 100%;
+	border-top: 1px solid #f9f4f4;
+	border-bottom: 1px solid #f9f4f4;
+}
+.invest-project-cart-inner-cart-detail-container .value{
+	color:black;
+	font-size: 10px;
+    font-weight: 700;
+}
+.invest-project-cart-inner-cart-detail-container .attribute{
+	color:red;
+	font-size: 10px;
+    font-weight: 700;
+}
+.invest-project-cart-inner-cart-detail-item{
+	padding:8px 8px;
+	border-left: 1px solid #f9f4f4;
+	width:100%;
+}
+
+.hidden {
+   display: none; 
+}
+
+.popover{
+    width:300px;
+    height:80px;
+}

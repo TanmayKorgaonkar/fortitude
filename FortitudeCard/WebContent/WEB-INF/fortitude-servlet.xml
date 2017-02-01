@@ -8,9 +8,70 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context.xsd">
- 
+        
+    <mvc:annotation-driven />               
 	<context:component-scan base-package="com.fortitude.controller" />
- 
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+    <bean id="loginDelegate" class="com.fortitude.delegate.LoginDelegate">
+    	<property name="accountService" ref="accountService"></property>
+    </bean>
+    
+    <bean id="accountService" class="com.fortitude.serviceImpl.AccountServiceImpl">
+    	<property name="accountDao" ref="accountDao"></property>
+    </bean>
+
+    <bean id="transferService" class="com.fortitude.serviceImpl.TransferServiceImpl">
+    	<property name="transferDao" ref="transferDao"></property>
+    </bean>
+    
+     <bean id="investService" class="com.fortitude.serviceImpl.InvestServiceImpl">
+    	<property name="investDao" ref="investDao"></property>
+    </bean>
+    
+    <bean id="investDao" class="com.fortitude.dao.impl.InvestDaoImpl">
+    	<property name="dataSource" ref="dataSource"></property>
+    </bean>
+    
+    <bean id="accountDao" class="com.fortitude.dao.impl.AccountDaoImpl">
+    	<property name="dataSource" ref="dataSource"></property>
+    	<property name="userRoleDao" ref="userRoleDao"></property>
+    </bean>
+    
+        
+    <bean id="projectService" class="com.fortitude.serviceImpl.ProjectServiceImpl">
+    	<property name="projectDao" ref="projectDao"></property>
+    </bean>
+    
+    <bean id="projectDao" class="com.fortitude.dao.impl.ProjectDaoImpl">
+    	<property name="dataSource" ref="dataSource"></property>
+    	<property name="categoryDao" ref="categoryDao"></property>
+    </bean>
+    
+    <bean id="transferDao" class="com.fortitude.dao.impl.TransferDaoImpl">
+    	<property name="dataSource" ref="dataSource"></property>
+    </bean>    
+    
+    <bean id="userRoleDao" class="com.fortitude.dao.impl.UserRoleDaoImpl">
+    </bean>
+    
+    <bean id="categoryDao" class="com.fortitude.dao.impl.CategoryDaoImpl">
+    </bean>
+    
+    <bean id="formValidator" class="com.fortitude.validators.SignUpFormValidator"/>
+    
+    <bean id="messageSource"
+        class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="validation" />
+    </bean>
+    
+    
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+    <property name="url" value="jdbc:mysql://localhost:3306/FortitudeDB"/>
+    <property name="username" value="root"/>
+    <property name="password" value="root"/>
+    </bean>
+    
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass"
@@ -18,5 +79,5 @@
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
- 
+	
 </beans>

@@ -1,0 +1,141 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Header</title>
+<script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+<%-- <script
+	src="<c:url value ="${pageContext.request.contextPath}/resources/js/jquery-1.9.1.min.js"/>"></script> --%>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common/header.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/lib/bootstrap.min.css" />
+
+<!-- Import Library Files -->
+<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"/></script>
+
+
+<!-- Import Application Files -->
+<script src="${pageContext.request.contextPath}/resources/js/app/header.js"/></script>
+
+</head>
+<body>
+
+<div class="header-container container">
+  <nav class="navbar navbar-inverse">
+    <div class="navbar-header">
+    	<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#">Fortitude</a>
+	</div>
+	
+	<div class="collapse navbar-collapse js-navbar-collapse">
+	
+		<!-- Main menu middle section start -->
+		<ul class="nav navbar-nav">
+			<li class="dropdown mega-dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account<span class="caret"></span></a>				
+					<ul class="dropdown-menu ">
+						<li><a href="transactions">View Transaction History</a></li>
+						<li><a href="#">Bonus Management</a></li>
+	                    <li><a href="invest.html">Investments summary</a></li>
+	                    <li><a href="#">Geneology Tree</a></li>
+						<li><a href="https://www.crxzone.com/" target="_blank">Buy LTE Coins</a></li>
+					</ul>
+			</li>
+			
+			<li class="dropdown mega-dropdown">
+				<a href="transferFunds.html" class="dropdown-toggle" data-toggle="dropdown">Transfer</a>				
+			</li>
+			
+			<li class="dropdown mega-dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Invest<span class="caret"></span></a>				
+				<ul class="dropdown-menu ">
+					<li><a href="projects.html">Projects</a></li>
+					<li><a href="transferFunds.html">Transfer Funds</a></li>
+					<li><a href="addProjects.html">Add Project</a></li>
+                    <li><a href="#">Single blog page</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown mega-dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Our Portfolio</a>				
+			</li>
+			
+			<li class="dropdown mega-dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Contact Us</a>				
+			</li>
+			
+  		</ul>
+  		<!-- Main menu middle section End-->
+  		
+  		
+ <!-- Main menu middle section End-->
+ 
+ 
+ 
+       <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My account <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="account.html">My account</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li>
+            
+            
+            <sec:authorize access="hasRole('ROLE_USER')">
+				<!-- For login user -->
+				<c:url value="/j_spring_security_logout" var="logoutUrl" />
+				<form action="${logoutUrl}" method="post" id="logoutForm">
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
+				</form>
+				<script>
+					function formSubmit() {
+						document.getElementById("logoutForm").submit();
+					}
+				</script>
+		
+				<c:if test="${pageContext.request.userPrincipal.name != null}">
+						User : ${pageContext.request.userPrincipal.name} | <a
+							href="javascript:formSubmit()"> Logout</a>
+				</c:if>
+			</sec:authorize>
+			    <sec:authorize access="hasRole('ROLE_ADMIN')">
+				<!-- For login user -->
+				<c:url value="/j_spring_security_logout" var="logoutUrl" />
+				<form action="${logoutUrl}" method="post" id="logoutForm">
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
+				</form>
+				<script>
+					function formSubmit() {
+						document.getElementById("logoutForm").submit();
+					}
+				</script>
+		
+				<c:if test="${pageContext.request.userPrincipal.name != null}">
+						User : ${pageContext.request.userPrincipal.name} | <a
+							href="javascript:formSubmit()"> Logout</a>
+				</c:if>
+			</sec:authorize>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <!-- Main menu middle section End-->
+	</div><!-- /.nav-collapse -->
+  </nav>
+</div>
+</body>
+</html>

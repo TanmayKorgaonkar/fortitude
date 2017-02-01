@@ -1,0 +1,24 @@
+.account-page{
+	margin: auto;
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.24);
+	padding: 16px;
+	width: 80%;
+}
+
+.account-page .attribute-container{
+	display: flex;
+	padding: 8px;
+	width: 100%;
+	margin:auto;
+}
+
+.account-page .attribute-container .title-text{
+	color: #6C6C6B;
+	width: 40%;
+}
+
+.account-page .attribute-container .separator{
+	padding: 0 32px;
+	color: #6C6C6B;
+	width: 10%;
+}
