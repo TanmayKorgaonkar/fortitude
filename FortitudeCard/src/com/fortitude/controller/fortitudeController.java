@@ -1,5 +1,7 @@
 package com.fortitude.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.ParseException;
@@ -8,14 +10,20 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,8 +43,10 @@ import com.fortitude.service.AccountService;
 import com.fortitude.service.InvestService;
 import com.fortitude.service.ProjectService;
 import com.fortitude.service.TransferService;
+import com.fortitude.vo.ChartVo;
 import com.fortitude.vo.InvestmentVo;
 import com.fortitude.vo.ProjectVo;
+import com.google.gson.Gson;
 @RequestMapping("/fortitude")
 @Controller
 public class fortitudeController {
@@ -269,6 +279,171 @@ public class fortitudeController {
 		System.out.println(projectDto.getProjectId());
 		model.addAttribute("projectDto", projectDto);
 		return "/page/projectList/projectdetail";
+	}
+	
+	@SuppressWarnings("deprecation")
+	@RequestMapping(value="/transaction", method = RequestMethod.GET)
+	public String getProjectById(HttpServletRequest request, HttpServletResponse response, Model model) throws SQLException, IOException{
+		String userId = request.getRemoteUser();
+		List<InvestDto> investDtoList = investService.getInvestByUser(userId);
+		// Need to use proper stream
+	//	Map<Integer, List<Long>> investmentDateList = new HashMap<>();
+		Map<Integer, List<InvestDto>> investmentDateList = investDtoList.stream().collect(Collectors.groupingBy((f -> (Integer)f.getDateOfInvestment().getMonth())));
+		System.out.println(investmentDateList);
+		/*investDtoList.stream().forEach(f ->{*/
+		/*	
+			if(!investmentDateList.containsKey(f.getDateOfInvestment().getMonth())){
+			investmentDateList.put(f.getDateOfInvestment().getMonth(), Arrays.asList(f.getInvestmentAmount()));
+			}else{
+				List<Long> newList = investmentDateList.get(f.getDateOfInvestment().getMonth());
+				newList.add(f.getInvestmentAmount());
+			}
+		});*/
+		Map<Integer, Long> toChartVo = investmentDateList.entrySet()
+				.stream().collect(Collectors.groupingBy(Entry::getKey, 
+						Collectors.summingLong(t -> t.getValue().stream().map(p -> p.getInvestmentAmount()).collect(Collectors.summingLong(f -> f.longValue())))));
+		System.out.println(toChartVo);
+		/*investmentDateList.entrySet().forEach(f -> {
+			long count = f.getValue().stream().mapToLong(z -> z.intValue()).sum();
+			toChartVo.put(f.getKey(), count);
+		});*/
+		ChartVo chartVo = new ChartVo();
+		List<String> legendList = new ArrayList<>();
+		List<Long> valuesList = new ArrayList<>();
+		toChartVo.entrySet().stream().forEach(f ->{
+			legendList.add(f.getKey().toString());
+			valuesList.add(f.getValue());
+		});
+		Map<String, List<Long>> toBeConverted = new HashMap<>();
+		toBeConverted.put("data", valuesList);
+		String toJson = getToJson(toBeConverted);
+		chartVo.setLegend(toJson);
+		chartVo.setValues(valuesList);
+		System.out.println(valuesList);
+		Gson gson = new Gson();
+		response.setContentType("application/json;charset=UTF-8");
+		response.setHeader("Cache-Control", "no-cache");
+		PrintWriter out = response.getWriter();
+		String jsonData = "";
+		try{
+			String jsonp = request.getParameter("jsonp");
+			jsonData = generateJsonChartYearWise(jsonp, toChartVo);
+			out.print(jsonData);
+		}catch(JSONException e){
+			e.printStackTrace();
+		}finally{
+			out.close();
+		}
+		/*String jsonD = gson.toJson(valuesList);
+
+		String jsonp = request.getParameter("jsonp");*/
+		
+		
+		model.addAttribute("chartVo", chartVo);
+		return "/page/userhistory/transaction";
+	}
+	
+	@RequestMapping(value="/transactions", method = RequestMethod.GET)
+	public void generateGet(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException{
+		String userId = request.getRemoteUser();
+		List<InvestDto> investDtoList = investService.getInvestByUser(userId);
+		// Need to use proper stream
+	//	Map<Integer, List<Long>> investmentDateList = new HashMap<>();
+		Map<Integer, List<InvestDto>> investmentDateList = investDtoList.stream().collect(Collectors.groupingBy((f -> (Integer)f.getDateOfInvestment().getMonth())));
+		System.out.println(investmentDateList);
+		/*investDtoList.stream().forEach(f ->{*/
+		/*	
+			if(!investmentDateList.containsKey(f.getDateOfInvestment().getMonth())){
+			investmentDateList.put(f.getDateOfInvestment().getMonth(), Arrays.asList(f.getInvestmentAmount()));
+			}else{
+				List<Long> newList = investmentDateList.get(f.getDateOfInvestment().getMonth());
+				newList.add(f.getInvestmentAmount());
+			}
+		});*/
+		Map<Integer, Long> toChartVo = investmentDateList.entrySet()
+				.stream().collect(Collectors.groupingBy(Entry::getKey, 
+						Collectors.summingLong(t -> t.getValue().stream().map(p -> p.getInvestmentAmount()).collect(Collectors.summingLong(f -> f.longValue())))));
+		System.out.println(toChartVo);
+		/*investmentDateList.entrySet().forEach(f -> {
+			long count = f.getValue().stream().mapToLong(z -> z.intValue()).sum();
+			toChartVo.put(f.getKey(), count);
+		});*/
+		ChartVo chartVo = new ChartVo();
+		List<String> legendList = new ArrayList<>();
+		List<Long> valuesList = new ArrayList<>();
+		toChartVo.entrySet().stream().forEach(f ->{
+			legendList.add(f.getKey().toString());
+			valuesList.add(f.getValue());
+		});
+		Map<String, List<Long>> toBeConverted = new HashMap<>();
+		toBeConverted.put("data", valuesList);
+		String toJson = getToJson(toBeConverted);
+		chartVo.setLegend(toJson);
+		chartVo.setValues(valuesList);
+		System.out.println(valuesList);
+		Gson gson = new Gson();
+		response.setContentType("application/json;charset=UTF-8");
+		response.setHeader("Cache-Control", "no-cache");
+		PrintWriter out = response.getWriter();
+		String jsonData = "";
+		try{
+			String jsonp = request.getParameter("jsonp");
+			jsonData = generateJsonChartYearWise(jsonp, toChartVo);
+			out.print(jsonData);
+		}catch(JSONException e){
+			e.printStackTrace();
+		}finally{
+			out.close();
+		}
+		/*String jsonD = gson.toJson(valuesList);
+
+		String jsonp = request.getParameter("jsonp");
+		
+		
+		model.addAttribute("chartVo", chartVo);
+		return "/page/userhistory/transaction";*/
+	}
+	
+	
+	public String generateJsonChartYearWise(String jsonp, Map<Integer, Long> toChartVo) throws JSONException{
+		String chartType = jsonp;
+		System.out.println(chartType);
+		JSONObject finalJsonObject = new JSONObject();
+		
+		JSONArray chartData = new JSONArray();
+		JSONArray xaxisArray = new JSONArray();
+		
+		JSONObject xaxisObject = new JSONObject();
+		JSONObject dataObject = new JSONObject();
+		
+		JSONArray allMonthsInterestGained = new JSONArray();
+		
+		toChartVo.entrySet()
+		.stream().forEach(f -> {
+			xaxisArray.put(f.getKey());
+			allMonthsInterestGained.put(f.getValue());
+		});
+		xaxisObject.put("category", xaxisArray);
+		chartData.put(xaxisObject);
+		
+		dataObject = new JSONObject();
+		dataObject.put("name", "Interest gained by month");
+		dataObject.put("color", "#FF0000");
+		dataObject.put("data", allMonthsInterestGained);
+		
+		chartData.put(dataObject);
+		
+		System.out.println("Chart Data" + chartData);
+		finalJsonObject.put(chartType, chartData);
+		String resultString = jsonp+"("+finalJsonObject.toString()+")";
+		return resultString;
+	}
+	
+	String getToJson(Map<String, List<Long>> toBeConverted){
+		Gson gson = new Gson();
+		String json = gson.toJson(toBeConverted);
+		System.out.println(json);
+		return json; 
 	}
 	
 	

@@ -124,47 +124,47 @@
 
 	<div id="content" class=" container">
 		<div class="fortitude-container">Project Id :
-			${projectDto.projectId}</div>
+			<c:out value="${projectDto.projectId}"/></div>
 	</div>
 	<div id="content" class=" container">
 		<div class="fortitude-container">Project Name :
-			${projectDto.projectName}</div>
+			<c:out value="${projectDto.projectName}"/></div>
 	</div>
 	<div id="content" class=" container">
 		<div class="fortitude-container">Project Owner :
-			${projectDto.projectOwner}</div>
+			<c:out value="${projectDto.projectOwner}"/></div>
 	</div>
 	<div id="content" class=" container">
 		<div class="fortitude-container">Project Cost :
-			${projectDto.projectCost}</div>
+			<c:out value="${projectDto.projectCost}"/></div>
 	</div>
 	<div id="content" class=" container">
 		<div class="fortitude-container">Project Details :
-			${projectDto.projectDetails}</div>
+			<c:out value="${projectDto.projectDetails}"/></div>
 	</div>
 	<div id="content" class=" container">
 		<div class="fortitude-container">Project External Link :
-			${projectDto.projectExternalLink}</div>
+			<c:out value="${projectDto.projectExternalLink}"/></div>
 	</div>
 	<div id="content" class=" container">
 		<div class="fortitude-container">Minimum Amount To Invest :
-			${projectDto.minimumAmountToInvest}</div>
+			<c:out value="${projectDto.minimumAmountToInvest}"></c:out></div>
 	</div>
 	<div id="content" class=" container">
 		<div class="fortitude-container">Project Start Time :
-			${projectDto.projectStartTime}</div>
+			<c:out value="${projectDto.projectStartTime}" /></div>
 	</div>
 	<div id="content" class=" container">
 		<div class="fortitude-container">Project Scheduled End Time :
-			${projectDto.projectScheduledEndTime}</div>
+			<c:out value="${projectDto.projectScheduledEndTime}"/></div>
 	</div>
 	<div id="content" class=" container">
 		<div class="fortitude-container">Return Promised :
-			${projectDto.returnPromised}</div>
+			<c:out value="${projectDto.returnPromised}"/></div>
 	</div>
 	<div id="content" class=" container">
 		<div class="fortitude-container">Project Type :
-			${projectDto.returnType}</div>
+			<c:out value="${projectDto.returnType}"/></div>
 	</div>
 	<div id="footer">
 		<%@ include file="../../common/footer.jsp"%>

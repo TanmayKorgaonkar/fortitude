@@ -44,7 +44,7 @@
 			<li class="dropdown mega-dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account<span class="caret"></span></a>				
 					<ul class="dropdown-menu ">
-						<li><a href="#">View Transaction History</a></li>
+						<li><a href="transactions">View Transaction History</a></li>
 						<li><a href="#">Bonus Management</a></li>
 	                    <li><a href="invest.html">Investments summary</a></li>
 	                    <li><a href="#">Geneology Tree</a></li>
